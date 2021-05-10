@@ -1,0 +1,40 @@
+{
+  "name": "tsbean-orm",
+  "version": "0.1.0",
+  "description": "Typescript bean-like oobject relational mapping framework.",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "prebuild": "npm run lint",
+    "compile": "tsc --pretty --declaration",
+    "build": "rimraf dist && npm run compile && npm run gendoc",
+    "lint": "eslint --fix src/**/*.ts",
+    "gendoc": "typedoc --out docs ./src"
+  },
+  "author": {
+    "name": "Agustin San Roman",
+    "email": "agustinsanromanguzman@gmail.com",
+    "url": "https://github.com/AgustinSRG"
+  },
+  "engines": {
+    "node": ">= 10.16.3"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^14.6.3",
+    "@typescript-eslint/eslint-plugin": "^4.0.1",
+    "@typescript-eslint/parser": "^4.0.1",
+    "eslint": "^7.8.1",
+    "rimraf": "^3.0.2",
+    "typedoc": "^0.20.36",
+    "typescript": "^4.0.2"
+  },
+  "peerDependencies": {
+    "typescript": "^4.0.2"
+  },
+  "private": true,
+  "license": "ISC"
+}

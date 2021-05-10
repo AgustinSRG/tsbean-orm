@@ -1,0 +1,21 @@
+# .gitignore file
+
+# Compilation Results
+
+dist
+
+# Docs
+
+docs
+
+# Ignore downloaded dependencies
+
+node_modules
+
+# Ignore temp files
+
+temp
+
+package-lock.json
+npm-debug.log
+core
