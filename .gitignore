@@ -16,6 +16,5 @@ node_modules
 
 temp
 
-package-lock.json
 npm-debug.log
 core
