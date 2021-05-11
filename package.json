@@ -30,7 +30,6 @@
   "pre-commit": [
     "lint"
   ],
-  "dependencies": {},
   "devDependencies": {
     "@types/node": "^15.0.2",
     "@typescript-eslint/eslint-plugin": "^4.22.1",
@@ -38,9 +37,6 @@
     "eslint": "^7.26.0",
     "rimraf": "^3.0.2",
     "typedoc": "^0.20.36",
-    "typescript": "^4.2.4"
-  },
-  "peerDependencies": {
     "typescript": "^4.2.4"
   },
   "license": "MIT"

@@ -7,7 +7,7 @@
 	"settings": {
 		"files.exclude": {
 			"dist/**": true,
-			"package-lock.json": true,
+			"docs/**": true,
 			"node_modules/**": true
 		},
 	}
