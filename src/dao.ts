@@ -7,6 +7,73 @@ import { DataSource, DataSourceDriver, GenericFilter, GenericKeyValue, GenericRo
 import { DataFilter } from "./filtering";
 
 /**
+ * Enforces a type when receiving data from data source
+ * @param value The value received from the data source
+ * @param type The enforzed type ("string" | "number" | "boolean" | "int" | "bigint" | "date" | "object" | "array")
+ * @returns The parsed value
+ */
+export function enforceType(value: any, type: "string" | "number" | "boolean" | "int" | "bigint" | "date" | "object" | "array"): any {
+    if (value === undefined || value === null) {
+        return null;
+    }
+    switch (type) {
+    case "string":
+        return "" + value;
+    case "number":
+        return Number(value);
+    case "boolean":
+        return !!value;
+    case "int":
+        return parseInt(value, 10);
+    case "bigint":
+        return BigInt(value);
+    case "date":
+        return new Date(value);
+    case "object":
+        if (typeof value === "object") {
+            return value;
+        } else if (typeof value === "string" && value.length > 0) {
+            try {
+                if (value.charAt(0) === "~") {
+                    return JSON.parse(value.substr(1));
+                } else {
+                    return JSON.parse(value);
+                }
+            } catch (ex) {
+                return Object.create(null);
+            }
+        } else {
+            return Object.create(null);
+        }
+    case "array":
+        if (value instanceof Array) {
+            return value;
+        } else if (typeof value === "string" && value.length > 0) {
+            try {
+                let array: any[];
+                if (value.charAt(0) === "~") {
+                    array = JSON.parse(value.substr(1));
+                } else {
+                    array = JSON.parse(value);
+                }
+
+                if (array instanceof Array) {
+                    return array;
+                } else {
+                    return [];
+                }
+            } catch (ex) {
+                return [];
+            }
+        } else {
+            return [];
+        }
+    default:
+        return null;
+    }
+}
+
+/**
  * Makes a copy of a bean object
  * @param original Original bean
  * @returns Copy of the bean

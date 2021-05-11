@@ -20,8 +20,8 @@ npm install --save tsbean-orm
 To connect with a data source, you need a driver. Here is a list of available ones:
  
   - [**MySQL / MariaDB / AuroraDB**](https://github.com/)
-  - [**PostgreSQL**](https://github.com/)
-  - [**MongoDB**](https://github.com/)
+  - **PostgreSQL** (Coming soon)
+  - **MongoDB** (Coming soon)
 
 If you want to write your own driver, check this template: [**Data Source Driver Template**](https://github.com/AgustinSRG/tsbean-driver-template)
 
@@ -66,7 +66,7 @@ Data models must have a constructor receiving the data from the data source. The
 Example:
 
 ```ts
-import { DataModel, GenericRow, DataSource } from "tsbean-orm";
+import { DataModel, GenericRow, DataSource, enforceType } from "tsbean-orm";
 
 export class Person extends DataModel {
 
@@ -84,9 +84,10 @@ export class Person extends DataModel {
         // Second, we set the class properties
         // The recommended way is to set one by one to prevent prototype pollution
         // You can also enforce the types if you do not trust the data source
+        // In that case you can use the enforceType utility function
 
-        this.name = "" + data.name;
-        this.age = parseInt(data.age, 10);
+        this.name = enforceType(data.name, "string");
+        this.age = enforceType(data.age, "int");
 
         // Finally, we must call init()
         this.init();
@@ -101,7 +102,7 @@ Finders are used to execute queries over multiple documents, based on a data mod
 To create one, you have to specify the  name of the data source, the table, the primary key (if any) and a callback to instanciate your custom data model.
 
 ```ts
-import { DataModel, GenericRow, DataSource, DataFinder } from "tsbean-orm";
+import { DataModel, GenericRow, DataSource, DataFinder, enforceType } from "tsbean-orm";
 
 export class Person extends DataModel {
 
@@ -128,9 +129,10 @@ export class Person extends DataModel {
         // Second, we set the class properties
         // The recommended way is to set one by one to prevent prototype pollution
         // You can also enforce the types if you do not trust the data source
+        // In that case you can use the enforceType utility function
 
-        this.name = "" + data.name;
-        this.age = parseInt(data.age, 10);
+        this.name = enforceType(data.name, "string");
+        this.age = enforceType(data.age, "int");
 
         // Finally, we must call init()
         this.init();
