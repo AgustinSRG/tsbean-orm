@@ -1,6 +1,8 @@
 // Data Filtering
 // (Typescript Bean ORM)
 
+"use strict";
+
 import { DataModel } from "./bean";
 import { DataAccessObject } from "./dao";
 import { GenericFilter, GenericKeyValue, GenericRow, SortDirection } from "./data-source";
