@@ -23,7 +23,7 @@ To connect with a data source, you need a driver. Here is a list of available on
   - [**PostgreSQL**](https://github.com/)
   - [**MongoDB**](https://github.com/)
 
-If you want to write your own driver, check this template: [**Data Source Driver Template**](https://github.com/)
+If you want to write your own driver, check this template: [**Data Source Driver Template**](https://github.com/AgustinSRG/tsbean-driver-template)
 
 With the driver you can create a data source for your application.
  - You can create one or multiple based on your needs
