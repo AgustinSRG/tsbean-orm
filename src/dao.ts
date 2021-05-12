@@ -96,7 +96,7 @@ export function makeCopyOfObject(original: any): any {
     const copy: any = Object.create(null);
     for (const attr of attrs) {
         const val = original[attr];
-        if (typeof val === "function" || (typeof val === "object" && (val instanceof DataAccessObject))) {
+        if (typeof val === "function" || (val instanceof DataAccessObject)) {
             continue; // Skip functions and DAOs
         } else if (typeof val === "object") {
             copy[attr] = makeCopyOfObject(val);
@@ -133,28 +133,59 @@ function compareArrays(a1, a2): boolean {
     return true;
 }
 
+function getType(o: any): string {
+    const varType = typeof o;
+    if (varType === "object") {
+        if (o instanceof Date) {
+            return "date";
+        }
+        if (o instanceof Array) {
+            return "array";
+        }
+        return "object";
+    } else {
+        return varType;
+    }
+}
+
 function isEqualsRecursive(o1: any, o2: any): boolean {
-    const t1 = typeof o1;
-    const t2 = typeof o2;
-    if (t1 === t2) {
-        if (typeof t1 === "object" && o1 !== null && o2 !== null) {
-            const keys1 = getRealkeys(o1);
-            const keys2 = getRealkeys(o2);
-            if (compareArrays(keys1, keys2)) {
-                for (const key of keys1) {
-                    if (!isEqualsRecursive(o1[key], o2[key])) {
-                        return false;
-                    }
-                }
-                return true;
-            } else {
+    const t1 = getType(o1);
+    const t2 = getType(o2);
+
+    if (t1 !== t2) {
+        return false;
+    }
+
+    switch (t1) {
+    case "date":
+        return o1.getTime() === o2.getTime();
+    case "array":
+        if (o1.length !== o2.length) {
+            return false;
+        }
+        for (let i = 0; i < o1.length; i++) {
+            if (!isEqualsRecursive(o1[i], o2[i])) {
                 return false;
             }
-        } else {
-            return (o1 === o2);
         }
-    } else {
-        return false;
+        return true;
+    case "object":
+    {
+        const keys1 = getRealkeys(o1);
+        const keys2 = getRealkeys(o2);
+        if (compareArrays(keys1, keys2)) {
+            for (const key of keys1) {
+                if (!isEqualsRecursive(o1[key], o2[key])) {
+                    return false;
+                }
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+    default:
+        return o1 === o2;
     }
 }
 
@@ -163,7 +194,7 @@ function firstLevelObjectDifference(original: any, changed: any): any {
     const changes: any = Object.create(null);
     for (const key of keys) {
         const val = changed[key];
-        if (typeof val === "function" || (typeof val === "object" && (val instanceof DataAccessObject))) {
+        if (typeof val === "function" || (val instanceof DataAccessObject)) {
             continue; // Skip functions and DAOs
         } else if (!isEqualsRecursive(original[key], val)) {
             changes[key] = val;
@@ -394,7 +425,9 @@ export class DataAccessObject {
         } catch (ex) {
             return Promise.reject(ex);
         }
-        this.original = makeCopyOfObject(this.ref); // Reset original
+        if (res) {
+            this.original = makeCopyOfObject(this.ref); // Reset original
+        }
         return Promise.resolve(res);
     }
 
