@@ -120,7 +120,7 @@ export interface DataSourceDriver {
      * @param key The name of the primary key (if any)
      * @param callback Callback to set the value of the primary key after inserting (Optional, only if auto-generated key)
      */
-    insert(table: string, row: GenericRow, key: string, callback?: (value: GenericValue) => void): Promise<void>;
+    insert(table: string, row: GenericRow, key: string, callback?: (value: GenericKeyValue) => void): Promise<void>;
 
     /**
      * Inserts many rows
