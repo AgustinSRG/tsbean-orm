@@ -136,6 +136,9 @@ function compareArrays(a1, a2): boolean {
 function getType(o: any): string {
     const varType = typeof o;
     if (varType === "object") {
+        if (o === null) {
+            return "null";
+        }
         if (o instanceof Date) {
             return "date";
         }

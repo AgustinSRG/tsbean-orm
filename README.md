@@ -19,7 +19,7 @@ npm install --save tsbean-orm
 
 To connect with a data source, you need a driver. Here is a list of available ones:
  
-  - [**MySQL / MariaDB / AuroraDB**](https://github.com/)
+  - [**MySQL / MariaDB / AuroraDB**](https://www.npmjs.com/package/tsbean-driver-mysql)
   - **PostgreSQL** (Coming soon)
   - **MongoDB** (Coming soon)
 

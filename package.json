@@ -1,7 +1,7 @@
 {
   "name": "tsbean-orm",
-  "version": "0.1.0",
-  "description": "Typescript bean-like oobject relational mapping framework.",
+  "version": "0.1.1",
+  "description": "Typescript bean-like object relational mapping framework.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "homepage": "https://github.com/AgustinSRG/tsbean-orm",
