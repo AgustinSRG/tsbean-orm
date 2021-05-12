@@ -281,7 +281,7 @@ export class DataAccessObject {
      * @param row Row to insert
      */
     public static async insertInstance(source: string, table: string, row: GenericRow) {
-        return DataAccessObject.getDriver(source).insert(table, makeCopyOfObject(row));
+        return DataAccessObject.getDriver(source).insert(table, makeCopyOfObject(row), null);
     }
 
     /**
@@ -360,7 +360,9 @@ export class DataAccessObject {
      */
     public async insert(): Promise<void> {
         try {
-            await DataAccessObject.getDriver(this.source).insert(this.table, makeCopyOfObject(this.ref));
+            await DataAccessObject.getDriver(this.source).insert(this.table, makeCopyOfObject(this.ref), this.pk, function (keyVal) {
+                this.ref[this.pk] = keyVal;
+            }.bind(this));
         } catch (ex) {
             return Promise.reject(ex);
         }
