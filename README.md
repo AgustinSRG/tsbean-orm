@@ -1,5 +1,6 @@
 # Typescript bean-like ORM
 
+[![npm version](https://badge.fury.io/js/tsbean-orm.svg)](https://badge.fury.io/js/tsbean-orm)
 [![Dependency Status](https://david-dm.org/AgustinSRG/tsbean-orm.svg)](https://david-dm.org/AgustinSRG/tsbean-orm)
 [![devDependency Status](https://david-dm.org/AgustinSRG/tsbean-orm/dev-status.svg)](https://david-dm.org/AgustinSRG/tsbean-orm?type=dev)
 
