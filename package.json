@@ -1,6 +1,6 @@
 {
   "name": "tsbean-orm",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Typescript bean-like object relational mapping framework.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
