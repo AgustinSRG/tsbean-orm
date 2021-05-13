@@ -1,5 +1,8 @@
 # Typescript bean-like ORM
 
+[![Dependency Status](https://david-dm.org/AgustinSRG/tsbean-orm.svg)](https://david-dm.org/AgustinSRG/tsbean-orm)
+[![devDependency Status](https://david-dm.org/AgustinSRG/tsbean-orm/dev-status.svg)](https://david-dm.org/AgustinSRG/tsbean-orm?type=dev)
+
 This is a generic object relational mapping framework for Typescript and NodeJS.
 
  - Easy to use
