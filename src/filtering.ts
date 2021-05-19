@@ -371,7 +371,7 @@ export class DataFinder<T extends DataModel> {
      * @param options Additional options
      * @param each Callback for each row
      */
-    public async findStream(where: DataFilter, orderBy: OrderBy, options: SelectOptions, each: (T) => Promise<void>): Promise<void> {
+    public async findStream(where: DataFilter, orderBy: OrderBy, options: SelectOptions, each: (row: T) => Promise<void>): Promise<void> {
         await DataAccessObject.findStream(this.source, this.table, where.query, orderBy.by, orderBy.dir, options.skip, options.limit, options.projection, async function (doc) {
             await each(this.dataParse(doc))
         }.bind(this));
@@ -384,7 +384,7 @@ export class DataFinder<T extends DataModel> {
      * @param options Additional options
      * @param each Callback for each row
      */
-    public async findStreamSync(where: DataFilter, orderBy: OrderBy, options: SelectOptions, each: (T) => void): Promise<void> {
+    public async findStreamSync(where: DataFilter, orderBy: OrderBy, options: SelectOptions, each: (row: T) => void): Promise<void> {
         await DataAccessObject.findStreamSync(this.source, this.table, where.query, orderBy.by, orderBy.dir, options.skip, options.limit, options.projection, function (doc) {
             each(this.dataParse(doc))
         }.bind(this));
