@@ -25,7 +25,7 @@ To connect with a data source, you need a driver. Here is a list of available on
  
   - [**MySQL**](https://www.npmjs.com/package/tsbean-driver-mysql)
   - [**PostgreSQL**](https://www.npmjs.com/package/tsbean-driver-postgres)
-  - **MongoDB** (Coming soon)
+  - [**MongoDB**](https://www.npmjs.com/package/tsbean-driver-mongo)
 
 If you want to write your own driver, check this template: [**Data Source Driver Template**](https://github.com/AgustinSRG/tsbean-driver-template)
 
