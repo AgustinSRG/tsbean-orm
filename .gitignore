@@ -4,10 +4,6 @@
 
 dist
 
-# Docs
-
-docs
-
 # Ignore downloaded dependencies
 
 node_modules
