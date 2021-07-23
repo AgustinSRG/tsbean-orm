@@ -5,7 +5,7 @@
 
 import { DataModel } from "./bean";
 import { DataAccessObject } from "./dao";
-import { GenericFilter, GenericKeyValue, GenericRow, SortDirection } from "./data-source";
+import { ExtraFindOptions, GenericFilter, GenericKeyValue, GenericRow, SortDirection } from "./data-source";
 import { escapeRegExp } from "./util";
 
 /**
@@ -349,10 +349,10 @@ export class DataFinder<T extends DataModel> {
      * @param orderBy Order of the results
      * @param options Additional options
      */
-    public async find(where: DataFilter, orderBy?: OrderBy, options?: SelectOptions): Promise<T[]> {
+    public async find(where: DataFilter, orderBy?: OrderBy, options?: SelectOptions, extraOptions?: ExtraFindOptions): Promise<T[]> {
         const opts = options || (new SelectOptions());
         orderBy = orderBy || OrderBy.nothing();
-        const data = await DataAccessObject.find(this.source, this.table, where.query, orderBy.by, orderBy.dir, opts.skip, opts.limit, opts.projection);
+        const data = await DataAccessObject.find(this.source, this.table, where.query, orderBy.by, orderBy.dir, opts.skip, opts.limit, opts.projection, extraOptions);
         if (data) {
             const result: T[] = [];
             for (const doc of data) {
@@ -371,10 +371,10 @@ export class DataFinder<T extends DataModel> {
      * @param options Additional options
      * @param each Callback for each row
      */
-    public async findStream(where: DataFilter, orderBy: OrderBy, options: SelectOptions, each: (row: T) => Promise<void>): Promise<void> {
+    public async findStream(where: DataFilter, orderBy: OrderBy, options: SelectOptions, each: (row: T) => Promise<void>, extraOptions?: ExtraFindOptions): Promise<void> {
         await DataAccessObject.findStream(this.source, this.table, where.query, orderBy.by, orderBy.dir, options.skip, options.limit, options.projection, async function (doc) {
             await each(this.dataParse(doc))
-        }.bind(this));
+        }.bind(this), extraOptions);
     }
 
     /**
@@ -384,18 +384,18 @@ export class DataFinder<T extends DataModel> {
      * @param options Additional options
      * @param each Callback for each row
      */
-    public async findStreamSync(where: DataFilter, orderBy: OrderBy, options: SelectOptions, each: (row: T) => void): Promise<void> {
+    public async findStreamSync(where: DataFilter, orderBy: OrderBy, options: SelectOptions, each: (row: T) => void, extraOptions?: ExtraFindOptions): Promise<void> {
         await DataAccessObject.findStreamSync(this.source, this.table, where.query, orderBy.by, orderBy.dir, options.skip, options.limit, options.projection, function (doc) {
             each(this.dataParse(doc))
-        }.bind(this));
+        }.bind(this), extraOptions);
     }
 
     /**
      * Counts instances
      * @param where Conditions for the instances to match
      */
-    public async count(where: DataFilter): Promise<number> {
-        return DataAccessObject.count(this.source, this.table, where.query);
+    public async count(where: DataFilter, extraOptions?: ExtraFindOptions): Promise<number> {
+        return DataAccessObject.count(this.source, this.table, where.query, extraOptions);
     }
 
     /**

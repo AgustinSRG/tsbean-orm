@@ -3,7 +3,7 @@
 
 "use strict";
 
-import { DataSource, DataSourceDriver, GenericFilter, GenericKeyValue, GenericRow, SortDirection } from "./data-source";
+import { DataSource, DataSourceDriver, ExtraFindOptions, GenericFilter, GenericKeyValue, GenericRow, SortDirection } from "./data-source";
 import { DataFilter } from "./filtering";
 
 /**
@@ -249,9 +249,10 @@ export class DataAccessObject {
      * @param skip Number of rows to skip. Leave as -1 for no skip
      * @param limit Limit of results. Leave as -1 for no limit
      * @param projection List of fields to featch from the table. Leave as null to fetch them all. 
+     * @param extraOptions Additional find options
      */
-    public static async find(source: string, table: string, filter: GenericFilter, sortBy: string, sortDir: SortDirection, skip: number, limit: number, projection: Set<string>): Promise<GenericRow[]> {
-        return DataAccessObject.getDriver(source).find(table, filter, sortBy, sortDir, skip, limit, projection);
+    public static async find(source: string, table: string, filter: GenericFilter, sortBy: string, sortDir: SortDirection, skip: number, limit: number, projection: Set<string>, extraOptions?: ExtraFindOptions): Promise<GenericRow[]> {
+        return DataAccessObject.getDriver(source).find(table, filter, sortBy, sortDir, skip, limit, projection, extraOptions);
     }
 
     /**
@@ -265,9 +266,10 @@ export class DataAccessObject {
      * @param limit Limit of results. Leave as -1 for no limit
      * @param projection List of fields to featch from the table. Leave as null to fetch them all. 
      * @param each Function to parse each row
+     * @param extraOptions Additional find options
      */
-    public static async findStream(source: string, table: string, filter: GenericFilter, sortBy: string, sortDir: SortDirection, skip: number, limit: number, projection: Set<string>, each: (row: GenericRow) => Promise<void>): Promise<void> {
-        return DataAccessObject.getDriver(source).findStream(table, filter, sortBy, sortDir, skip, limit, projection, each);
+    public static async findStream(source: string, table: string, filter: GenericFilter, sortBy: string, sortDir: SortDirection, skip: number, limit: number, projection: Set<string>, each: (row: GenericRow) => Promise<void>, extraOptions?: ExtraFindOptions): Promise<void> {
+        return DataAccessObject.getDriver(source).findStream(table, filter, sortBy, sortDir, skip, limit, projection, each, extraOptions);
     }
 
     /**
@@ -281,9 +283,10 @@ export class DataAccessObject {
      * @param limit Limit of results. Leave as -1 for no limit
      * @param projection List of fields to featch from the table. Leave as null to fetch them all. 
      * @param each Function to parse each row
+     * @param extraOptions Additional find options
      */
-    public static async findStreamSync(source: string, table: string, filter: GenericFilter, sortBy: string, sortDir: SortDirection, skip: number, limit: number, projection: Set<string>, each: (row: GenericRow) => void): Promise<void> {
-        return DataAccessObject.getDriver(source).findStreamSync(table, filter, sortBy, sortDir, skip, limit, projection, each);
+    public static async findStreamSync(source: string, table: string, filter: GenericFilter, sortBy: string, sortDir: SortDirection, skip: number, limit: number, projection: Set<string>, each: (row: GenericRow) => void, extraOptions?: ExtraFindOptions): Promise<void> {
+        return DataAccessObject.getDriver(source).findStreamSync(table, filter, sortBy, sortDir, skip, limit, projection, each, extraOptions);
     }
 
     /**
@@ -291,9 +294,10 @@ export class DataAccessObject {
      * @param source Data source name
      * @param table Table name
      * @param filter Filter to apply
+     * @param extraOptions Additional find options
      */
-    public static async count(source: string, table: string, filter: GenericFilter): Promise<number> {
-        return DataAccessObject.getDriver(source).count(table, filter);
+    public static async count(source: string, table: string, filter: GenericFilter, extraOptions?: ExtraFindOptions): Promise<number> {
+        return DataAccessObject.getDriver(source).count(table, filter, extraOptions);
     }
 
     /**
