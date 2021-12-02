@@ -423,7 +423,7 @@ export class DataAccessObject {
                 const affected = await DataAccessObject.getDriver(this.source).updateMany(this.table, DataFilter.and(DataFilter.equals(this.pk, this.ref[this.pk]), condition).query, diff);
                 res = affected > 0;
             } else {
-                await DataAccessObject.getDriver(this.source).update(this.table, this.pk, this.ref[this.pk], diff);
+                await DataAccessObject.getDriver(this.source).update(this.table, this.pk, this.original[this.pk], diff);
             }
         } catch (ex) {
             return Promise.reject(ex);
@@ -442,7 +442,7 @@ export class DataAccessObject {
         if (!this.pk) {
             throw new Error("Cannot delete: A primary key is not set for this data model. Use a finder instead.");
         }
-        return DataAccessObject.getDriver(this.source).delete(this.table, this.pk, this.ref[this.pk]);
+        return DataAccessObject.getDriver(this.source).delete(this.table, this.pk, this.original[this.pk]);
     }
 
     /**
@@ -454,6 +454,6 @@ export class DataAccessObject {
         if (!this.pk) {
             throw new Error("Cannot update: A primary key is not set for this data model. Use a finder instead.");
         }
-        return DataAccessObject.getDriver(this.source).increment(this.table, this.pk, this.ref[this.pk], field, inc);
+        return DataAccessObject.getDriver(this.source).increment(this.table, this.pk, this.original[this.pk], field, inc);
     }
 }
