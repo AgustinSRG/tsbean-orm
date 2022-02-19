@@ -1,8 +1,6 @@
 # Typescript bean-like ORM
 
 [![npm version](https://badge.fury.io/js/tsbean-orm.svg)](https://badge.fury.io/js/tsbean-orm)
-[![Dependency Status](https://david-dm.org/AgustinSRG/tsbean-orm.svg)](https://david-dm.org/AgustinSRG/tsbean-orm)
-[![devDependency Status](https://david-dm.org/AgustinSRG/tsbean-orm/dev-status.svg)](https://david-dm.org/AgustinSRG/tsbean-orm?type=dev)
 
 This is a generic object relational mapping framework for Typescript and NodeJS.
 
@@ -50,6 +48,8 @@ DataSource.set(DataSource.DEFAULT, mySource);
 ## Data Models
 
 The recommended architecture when using this project is to create a `models` folder with a class file for each entity of your relational data model.
+
+Check out this tool to automatically generate the model classes: [https://agustinsrg.github.io/tsbean-codegen/](https://agustinsrg.github.io/tsbean-codegen/);
 
 The data models must extend `DataModel`
 
