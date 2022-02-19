@@ -1,357 +1,110 @@
-<!doctype html>
-<html class="default no-js">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>tsbean-orm</title>
-	<meta name="description" content="Documentation for tsbean-orm">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
-	<script async src="assets/js/search.js" id="search-script"></script>
-</head>
-<body>
-<header>
-	<div class="tsd-page-toolbar">
-		<div class="container">
-			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
-					<div class="field">
-						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-						<input id="tsd-search-field" type="text" />
-					</div>
-					<ul class="results">
-						<li class="state loading">Preparing search index...</li>
-						<li class="state failure">The search index is not available</li>
-					</ul>
-					<a href="index.html" class="title">tsbean-orm</a>
-				</div>
-				<div class="table-cell" id="tsd-widgets">
-					<div id="tsd-filter">
-						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-						<div class="tsd-filter-group">
-							<div class="tsd-select" id="tsd-filter-visibility">
-								<span class="tsd-select-label">All</span>
-								<ul class="tsd-select-list">
-									<li data-value="public">Public</li>
-									<li data-value="protected">Public/Protected</li>
-									<li data-value="private" class="selected">All</li>
-								</ul>
-							</div>
-							<input type="checkbox" id="tsd-filter-inherited" checked />
-							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-						</div>
-					</div>
-					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tsd-page-title">
-		<div class="container">
-			<h1>tsbean-orm</h1>
-		</div>
-	</div>
-</header>
-<div class="container container-main">
-	<div class="row">
-		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<a href="#typescript-bean-like-orm" id="typescript-bean-like-orm" style="color: inherit; text-decoration: none;">
-					<h1>Typescript bean-like ORM</h1>
-				</a>
-				<p><a href="https://badge.fury.io/js/tsbean-orm"><img src="https://badge.fury.io/js/tsbean-orm.svg" alt="npm version"></a>
-					<a href="https://david-dm.org/AgustinSRG/tsbean-orm"><img src="https://david-dm.org/AgustinSRG/tsbean-orm.svg" alt="Dependency Status"></a>
-				<a href="https://david-dm.org/AgustinSRG/tsbean-orm?type=dev"><img src="https://david-dm.org/AgustinSRG/tsbean-orm/dev-status.svg" alt="devDependency Status"></a></p>
-				<p>This is a generic object relational mapping framework for Typescript and NodeJS.</p>
-				<ul>
-					<li>Easy to use</li>
-					<li>No dependencies</li>
-					<li>Pluggable drivers</li>
-					<li>Promise-based</li>
-				</ul>
-				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
-					<h2>Installation</h2>
-				</a>
-				<p>To install into your project using npm, type:</p>
-				<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">install</span><span style="color: #000000"> --</span><span style="color: #001080">save</span><span style="color: #000000"> </span><span style="color: #001080">tsbean</span><span style="color: #000000">-</span><span style="color: #001080">orm</span>
+<!DOCTYPE html><html class="default"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>tsbean-orm</title><meta name="description" content="Documentation for tsbean-orm"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">tsbean-orm</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>tsbean-orm</h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
+<a href="#typescript-bean-like-orm" id="typescript-bean-like-orm" style="color: inherit; text-decoration: none;">
+  <h1>Typescript bean-like ORM</h1>
+</a>
+<p><a href="https://badge.fury.io/js/tsbean-orm"><img src="https://badge.fury.io/js/tsbean-orm.svg" alt="npm version"></a></p>
+<p>This is a generic object relational mapping framework for Typescript and NodeJS.</p>
+<ul>
+<li>Easy to use</li>
+<li>No dependencies</li>
+<li>Pluggable drivers</li>
+<li>Promise-based</li>
+</ul>
+
+<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+  <h2>Installation</h2>
+</a>
+<p>To install into your project using npm, type:</p>
+<pre><code><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">install</span><span class="hl-1"> --</span><span class="hl-0">save</span><span class="hl-1"> </span><span class="hl-0">tsbean</span><span class="hl-1">-</span><span class="hl-0">orm</span>
 </code></pre>
-				<a href="#data-sources-and-drivers" id="data-sources-and-drivers" style="color: inherit; text-decoration: none;">
-					<h2>Data sources and drivers</h2>
-				</a>
-				<p>To connect with a data source, you need a driver. Here is a list of available ones:</p>
-				<ul>
-					<li><a href="https://www.npmjs.com/package/tsbean-driver-mysql"><strong>MySQL</strong></a></li>
-					<li><a href="https://www.npmjs.com/package/tsbean-driver-postgres"><strong>PostgreSQL</strong></a></li>
-					<li><a href="https://www.npmjs.com/package/tsbean-driver-mongo"><strong>MongoDB</strong></a></li>
-				</ul>
-				<p>If you want to write your own driver, check this template: <a href="https://github.com/AgustinSRG/tsbean-driver-template"><strong>Data Source Driver Template</strong></a></p>
-				<p>With the driver you can create a data source for your application.</p>
-				<ul>
-					<li>You can create one or multiple based on your needs</li>
-					<li>Each data source must have an unique name</li>
-					<li>If you are only using a single data source, you can use <code>DataSource.DEFAULT</code> as the name for it.</li>
-				</ul>
-				<p>To set a data source use <code>DataSource.set</code></p>
-				<p>Example:</p>
-				<pre><code class="language-ts"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">DataSourceDriver</span><span style="color: #000000">, </span><span style="color: #001080">DataSource</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;tsbean-orm&quot;</span><span style="color: #000000">;</span>
-<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">MyDriver</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;tsbean-orm-driver-mydriver&quot;</span>
 
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">mySource</span><span style="color: #000000"> = </span><span style="color: #001080">MyDriver</span><span style="color: #000000">.</span><span style="color: #795E26">createDataSource</span><span style="color: #000000">({} </span><span style="color: #008000">/* Options */</span><span style="color: #000000">);</span>
-
-<span style="color: #001080">DataSource</span><span style="color: #000000">.</span><span style="color: #795E26">set</span><span style="color: #000000">(</span><span style="color: #001080">DataSource</span><span style="color: #000000">.</span><span style="color: #0070C1">DEFAULT</span><span style="color: #000000">, </span><span style="color: #001080">mySource</span><span style="color: #000000">);</span>
+<a href="#data-sources-and-drivers" id="data-sources-and-drivers" style="color: inherit; text-decoration: none;">
+  <h2>Data sources and drivers</h2>
+</a>
+<p>To connect with a data source, you need a driver. Here is a list of available ones:</p>
+<ul>
+<li><a href="https://www.npmjs.com/package/tsbean-driver-mysql"><strong>MySQL</strong></a></li>
+<li><a href="https://www.npmjs.com/package/tsbean-driver-postgres"><strong>PostgreSQL</strong></a></li>
+<li><a href="https://www.npmjs.com/package/tsbean-driver-mongo"><strong>MongoDB</strong></a></li>
+</ul>
+<p>If you want to write your own driver, check this template: <a href="https://github.com/AgustinSRG/tsbean-driver-template"><strong>Data Source Driver Template</strong></a></p>
+<p>With the driver you can create a data source for your application.</p>
+<ul>
+<li>You can create one or multiple based on your needs</li>
+<li>Each data source must have an unique name</li>
+<li>If you are only using a single data source, you can use <code>DataSource.DEFAULT</code> as the name for it.</li>
+</ul>
+<p>To set a data source use <code>DataSource.set</code></p>
+<p>Example:</p>
+<pre><code class="language-ts"><span class="hl-2">import</span><span class="hl-1"> { </span><span class="hl-0">DataSourceDriver</span><span class="hl-1">, </span><span class="hl-0">DataSource</span><span class="hl-1"> } </span><span class="hl-2">from</span><span class="hl-1"> </span><span class="hl-3">&quot;tsbean-orm&quot;</span><span class="hl-1">;</span><br/><span class="hl-2">import</span><span class="hl-1"> { </span><span class="hl-0">MyDriver</span><span class="hl-1"> } </span><span class="hl-2">from</span><span class="hl-1"> </span><span class="hl-3">&quot;tsbean-orm-driver-mydriver&quot;</span><br/><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">mySource</span><span class="hl-1"> = </span><span class="hl-0">MyDriver</span><span class="hl-1">.</span><span class="hl-6">createDataSource</span><span class="hl-1">({} </span><span class="hl-7">/* Options */</span><span class="hl-1">);</span><br/><br/><span class="hl-0">DataSource</span><span class="hl-1">.</span><span class="hl-6">set</span><span class="hl-1">(</span><span class="hl-0">DataSource</span><span class="hl-1">.</span><span class="hl-5">DEFAULT</span><span class="hl-1">, </span><span class="hl-0">mySource</span><span class="hl-1">);</span>
 </code></pre>
-				<a href="#data-models" id="data-models" style="color: inherit; text-decoration: none;">
-					<h2>Data Models</h2>
-				</a>
-				<p>The recommended architecture when using this project is to create a <code>models</code> folder with a class file for each entity of your relational data model.</p>
-				<p>The data models must extend <code>DataModel</code></p>
-				<pre><code class="language-ts"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">DataModel</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;tsbean-orm&quot;</span><span style="color: #000000">;</span>
 
-<span style="color: #AF00DB">export</span><span style="color: #000000"> </span><span style="color: #0000FF">class</span><span style="color: #000000"> </span><span style="color: #267F99">MyModel</span><span style="color: #000000"> </span><span style="color: #0000FF">extends</span><span style="color: #000000"> </span><span style="color: #267F99">DataModel</span><span style="color: #000000"> {</span>
-
-<span style="color: #000000">}</span>
+<a href="#data-models" id="data-models" style="color: inherit; text-decoration: none;">
+  <h2>Data Models</h2>
+</a>
+<p>The recommended architecture when using this project is to create a <code>models</code> folder with a class file for each entity of your relational data model.</p>
+<p>Check out this tool to automatically generate the model classes: <a href="https://agustinsrg.github.io/tsbean-codegen/">https://agustinsrg.github.io/tsbean-codegen/</a>;</p>
+<p>The data models must extend <code>DataModel</code></p>
+<pre><code class="language-ts"><span class="hl-2">import</span><span class="hl-1"> { </span><span class="hl-0">DataModel</span><span class="hl-1"> } </span><span class="hl-2">from</span><span class="hl-1"> </span><span class="hl-3">&quot;tsbean-orm&quot;</span><span class="hl-1">;</span><br/><br/><span class="hl-2">export</span><span class="hl-1"> </span><span class="hl-4">class</span><span class="hl-1"> </span><span class="hl-8">MyModel</span><span class="hl-1"> </span><span class="hl-4">extends</span><span class="hl-1"> </span><span class="hl-8">DataModel</span><span class="hl-1"> {</span><br/><br/><span class="hl-1">}</span>
 </code></pre>
-				<p>Data models must have a constructor receiving the data from the data source. The constructor must:</p>
-				<ul>
-					<li>Call DataModel class <code>super</code> construtor, wih the name of the data source, the table and the primary key.</li>
-					<li>Set the properties of the model from the data.</li>
-					<li>Call <code>this.init()</code> for the orm to start checking for changes.</li>
-				</ul>
-				<p>Example:</p>
-				<pre><code class="language-ts"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">DataModel</span><span style="color: #000000">, </span><span style="color: #001080">GenericRow</span><span style="color: #000000">, </span><span style="color: #001080">DataSource</span><span style="color: #000000">, </span><span style="color: #001080">enforceType</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;tsbean-orm&quot;</span><span style="color: #000000">;</span>
-
-<span style="color: #AF00DB">export</span><span style="color: #000000"> </span><span style="color: #0000FF">class</span><span style="color: #000000"> </span><span style="color: #267F99">Person</span><span style="color: #000000"> </span><span style="color: #0000FF">extends</span><span style="color: #000000"> </span><span style="color: #267F99">DataModel</span><span style="color: #000000"> {</span>
-
-<span style="color: #000000">    </span><span style="color: #0000FF">public</span><span style="color: #000000"> </span><span style="color: #001080">name</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000">;</span>
-<span style="color: #000000">    </span><span style="color: #0000FF">public</span><span style="color: #000000"> </span><span style="color: #001080">age</span><span style="color: #000000">: </span><span style="color: #267F99">number</span><span style="color: #000000">;</span>
-
-<span style="color: #000000">    </span><span style="color: #0000FF">constructor</span><span style="color: #000000">(</span><span style="color: #001080">data</span><span style="color: #000000">: </span><span style="color: #267F99">GenericRow</span><span style="color: #000000">) {</span>
-<span style="color: #000000">        </span><span style="color: #008000">// First, we call DataModel constructor </span>
-<span style="color: #000000">        </span><span style="color: #0000FF">super</span><span style="color: #000000">(</span>
-<span style="color: #000000">            </span><span style="color: #001080">DataSource</span><span style="color: #000000">.</span><span style="color: #0070C1">DEFAULT</span><span style="color: #000000">, </span><span style="color: #008000">// The data source</span>
-<span style="color: #000000">            </span><span style="color: #A31515">&quot;persons&quot;</span><span style="color: #000000">, </span><span style="color: #008000">// The table or collection name</span>
-<span style="color: #000000">            </span><span style="color: #A31515">&quot;name&quot;</span><span style="color: #000000"> </span><span style="color: #008000">// The primary key. Leave blank if no primary key</span>
-<span style="color: #000000">        );</span>
-
-<span style="color: #000000">        </span><span style="color: #008000">// Second, we set the class properties</span>
-<span style="color: #000000">        </span><span style="color: #008000">// The recommended way is to set one by one to prevent prototype pollution</span>
-<span style="color: #000000">        </span><span style="color: #008000">// You can also enforce the types if you do not trust the data source</span>
-<span style="color: #000000">        </span><span style="color: #008000">// In that case you can use the enforceType utility function</span>
-
-<span style="color: #000000">        </span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">name</span><span style="color: #000000"> = </span><span style="color: #795E26">enforceType</span><span style="color: #000000">(</span><span style="color: #001080">data</span><span style="color: #000000">.</span><span style="color: #001080">name</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;string&quot;</span><span style="color: #000000">);</span>
-<span style="color: #000000">        </span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">age</span><span style="color: #000000"> = </span><span style="color: #795E26">enforceType</span><span style="color: #000000">(</span><span style="color: #001080">data</span><span style="color: #000000">.</span><span style="color: #001080">age</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;int&quot;</span><span style="color: #000000">);</span>
-
-<span style="color: #000000">        </span><span style="color: #008000">// Finally, we must call init()</span>
-<span style="color: #000000">        </span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #795E26">init</span><span style="color: #000000">();</span>
-<span style="color: #000000">    }</span>
-<span style="color: #000000">}</span>
+<p>Data models must have a constructor receiving the data from the data source. The constructor must:</p>
+<ul>
+<li>Call DataModel class <code>super</code> construtor, wih the name of the data source, the table and the primary key.</li>
+<li>Set the properties of the model from the data.</li>
+<li>Call <code>this.init()</code> for the orm to start checking for changes.</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-ts"><span class="hl-2">import</span><span class="hl-1"> { </span><span class="hl-0">DataModel</span><span class="hl-1">, </span><span class="hl-0">GenericRow</span><span class="hl-1">, </span><span class="hl-0">DataSource</span><span class="hl-1">, </span><span class="hl-0">enforceType</span><span class="hl-1"> } </span><span class="hl-2">from</span><span class="hl-1"> </span><span class="hl-3">&quot;tsbean-orm&quot;</span><span class="hl-1">;</span><br/><br/><span class="hl-2">export</span><span class="hl-1"> </span><span class="hl-4">class</span><span class="hl-1"> </span><span class="hl-8">Person</span><span class="hl-1"> </span><span class="hl-4">extends</span><span class="hl-1"> </span><span class="hl-8">DataModel</span><span class="hl-1"> {</span><br/><br/><span class="hl-1">    </span><span class="hl-4">public</span><span class="hl-1"> </span><span class="hl-0">name</span><span class="hl-1">: </span><span class="hl-8">string</span><span class="hl-1">;</span><br/><span class="hl-1">    </span><span class="hl-4">public</span><span class="hl-1"> </span><span class="hl-0">age</span><span class="hl-1">: </span><span class="hl-8">number</span><span class="hl-1">;</span><br/><br/><span class="hl-1">    </span><span class="hl-4">constructor</span><span class="hl-1">(</span><span class="hl-0">data</span><span class="hl-1">: </span><span class="hl-8">GenericRow</span><span class="hl-1">) {</span><br/><span class="hl-1">        </span><span class="hl-7">// First, we call DataModel constructor </span><br/><span class="hl-1">        </span><span class="hl-4">super</span><span class="hl-1">(</span><br/><span class="hl-1">            </span><span class="hl-0">DataSource</span><span class="hl-1">.</span><span class="hl-5">DEFAULT</span><span class="hl-1">, </span><span class="hl-7">// The data source</span><br/><span class="hl-1">            </span><span class="hl-3">&quot;persons&quot;</span><span class="hl-1">, </span><span class="hl-7">// The table or collection name</span><br/><span class="hl-1">            </span><span class="hl-3">&quot;name&quot;</span><span class="hl-1"> </span><span class="hl-7">// The primary key. Leave blank if no primary key</span><br/><span class="hl-1">        );</span><br/><br/><span class="hl-1">        </span><span class="hl-7">// Second, we set the class properties</span><br/><span class="hl-1">        </span><span class="hl-7">// The recommended way is to set one by one to prevent prototype pollution</span><br/><span class="hl-1">        </span><span class="hl-7">// You can also enforce the types if you do not trust the data source</span><br/><span class="hl-1">        </span><span class="hl-7">// In that case you can use the enforceType utility function</span><br/><br/><span class="hl-1">        </span><span class="hl-4">this</span><span class="hl-1">.</span><span class="hl-0">name</span><span class="hl-1"> = </span><span class="hl-6">enforceType</span><span class="hl-1">(</span><span class="hl-0">data</span><span class="hl-1">.</span><span class="hl-0">name</span><span class="hl-1">, </span><span class="hl-3">&quot;string&quot;</span><span class="hl-1">);</span><br/><span class="hl-1">        </span><span class="hl-4">this</span><span class="hl-1">.</span><span class="hl-0">age</span><span class="hl-1"> = </span><span class="hl-6">enforceType</span><span class="hl-1">(</span><span class="hl-0">data</span><span class="hl-1">.</span><span class="hl-0">age</span><span class="hl-1">, </span><span class="hl-3">&quot;int&quot;</span><span class="hl-1">);</span><br/><br/><span class="hl-1">        </span><span class="hl-7">// Finally, we must call init()</span><br/><span class="hl-1">        </span><span class="hl-4">this</span><span class="hl-1">.</span><span class="hl-6">init</span><span class="hl-1">();</span><br/><span class="hl-1">    }</span><br/><span class="hl-1">}</span>
 </code></pre>
-				<a href="#finders" id="finders" style="color: inherit; text-decoration: none;">
-					<h2>Finders</h2>
-				</a>
-				<p>Finders are used to execute queries over multiple documents, based on a data model.</p>
-				<p>To create one, you have to specify the  name of the data source, the table, the primary key (if any) and a callback to instanciate your custom data model.</p>
-				<pre><code class="language-ts"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">DataModel</span><span style="color: #000000">, </span><span style="color: #001080">GenericRow</span><span style="color: #000000">, </span><span style="color: #001080">DataSource</span><span style="color: #000000">, </span><span style="color: #001080">DataFinder</span><span style="color: #000000">, </span><span style="color: #001080">enforceType</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;tsbean-orm&quot;</span><span style="color: #000000">;</span>
 
-<span style="color: #AF00DB">export</span><span style="color: #000000"> </span><span style="color: #0000FF">class</span><span style="color: #000000"> </span><span style="color: #267F99">Person</span><span style="color: #000000"> </span><span style="color: #0000FF">extends</span><span style="color: #000000"> </span><span style="color: #267F99">DataModel</span><span style="color: #000000"> {</span>
-
-<span style="color: #000000">    </span><span style="color: #0000FF">public</span><span style="color: #000000"> </span><span style="color: #0000FF">static</span><span style="color: #000000"> </span><span style="color: #001080">finder</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">DataFinder</span><span style="color: #000000">&lt;</span><span style="color: #267F99">Person</span><span style="color: #000000">&gt;(</span>
-<span style="color: #000000">            </span><span style="color: #001080">DataSource</span><span style="color: #000000">.</span><span style="color: #0070C1">DEFAULT</span><span style="color: #000000">, </span><span style="color: #008000">// The data source</span>
-<span style="color: #000000">            </span><span style="color: #A31515">&quot;persons&quot;</span><span style="color: #000000">, </span><span style="color: #008000">// The table or collection name</span>
-<span style="color: #000000">            </span><span style="color: #A31515">&quot;name&quot;</span><span style="color: #000000"> </span><span style="color: #008000">// The primary key. Leave blank if no primary key</span>
-<span style="color: #000000">            (</span><span style="color: #001080">data</span><span style="color: #000000">: </span><span style="color: #267F99">GenericRow</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
-<span style="color: #000000">                </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Person</span><span style="color: #000000">(</span><span style="color: #001080">data</span><span style="color: #000000">);</span>
-<span style="color: #000000">            },</span>
-<span style="color: #000000">    );</span>
-
-<span style="color: #000000">    </span><span style="color: #0000FF">public</span><span style="color: #000000"> </span><span style="color: #001080">name</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000">;</span>
-<span style="color: #000000">    </span><span style="color: #0000FF">public</span><span style="color: #000000"> </span><span style="color: #001080">age</span><span style="color: #000000">: </span><span style="color: #267F99">number</span><span style="color: #000000">;</span>
-
-<span style="color: #000000">    </span><span style="color: #0000FF">constructor</span><span style="color: #000000">(</span><span style="color: #001080">data</span><span style="color: #000000">: </span><span style="color: #267F99">GenericRow</span><span style="color: #000000">) {</span>
-<span style="color: #000000">        </span><span style="color: #008000">// First, we call DataModel constructor </span>
-<span style="color: #000000">        </span><span style="color: #0000FF">super</span><span style="color: #000000">(</span>
-<span style="color: #000000">            </span><span style="color: #001080">DataSource</span><span style="color: #000000">.</span><span style="color: #0070C1">DEFAULT</span><span style="color: #000000">, </span><span style="color: #008000">// The data source</span>
-<span style="color: #000000">            </span><span style="color: #A31515">&quot;persons&quot;</span><span style="color: #000000">, </span><span style="color: #008000">// The table or collection name</span>
-<span style="color: #000000">            </span><span style="color: #A31515">&quot;name&quot;</span><span style="color: #000000"> </span><span style="color: #008000">// The primary key. Leave blank if no primary key</span>
-<span style="color: #000000">        );</span>
-
-<span style="color: #000000">        </span><span style="color: #008000">// Second, we set the class properties</span>
-<span style="color: #000000">        </span><span style="color: #008000">// The recommended way is to set one by one to prevent prototype pollution</span>
-<span style="color: #000000">        </span><span style="color: #008000">// You can also enforce the types if you do not trust the data source</span>
-<span style="color: #000000">        </span><span style="color: #008000">// In that case you can use the enforceType utility function</span>
-
-<span style="color: #000000">        </span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">name</span><span style="color: #000000"> = </span><span style="color: #795E26">enforceType</span><span style="color: #000000">(</span><span style="color: #001080">data</span><span style="color: #000000">.</span><span style="color: #001080">name</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;string&quot;</span><span style="color: #000000">);</span>
-<span style="color: #000000">        </span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #001080">age</span><span style="color: #000000"> = </span><span style="color: #795E26">enforceType</span><span style="color: #000000">(</span><span style="color: #001080">data</span><span style="color: #000000">.</span><span style="color: #001080">age</span><span style="color: #000000">, </span><span style="color: #A31515">&quot;int&quot;</span><span style="color: #000000">);</span>
-
-<span style="color: #000000">        </span><span style="color: #008000">// Finally, we must call init()</span>
-<span style="color: #000000">        </span><span style="color: #0000FF">this</span><span style="color: #000000">.</span><span style="color: #795E26">init</span><span style="color: #000000">();</span>
-<span style="color: #000000">    }</span>
-<span style="color: #000000">}</span>
+<a href="#finders" id="finders" style="color: inherit; text-decoration: none;">
+  <h2>Finders</h2>
+</a>
+<p>Finders are used to execute queries over multiple documents, based on a data model.</p>
+<p>To create one, you have to specify the  name of the data source, the table, the primary key (if any) and a callback to instanciate your custom data model.</p>
+<pre><code class="language-ts"><span class="hl-2">import</span><span class="hl-1"> { </span><span class="hl-0">DataModel</span><span class="hl-1">, </span><span class="hl-0">GenericRow</span><span class="hl-1">, </span><span class="hl-0">DataSource</span><span class="hl-1">, </span><span class="hl-0">DataFinder</span><span class="hl-1">, </span><span class="hl-0">enforceType</span><span class="hl-1"> } </span><span class="hl-2">from</span><span class="hl-1"> </span><span class="hl-3">&quot;tsbean-orm&quot;</span><span class="hl-1">;</span><br/><br/><span class="hl-2">export</span><span class="hl-1"> </span><span class="hl-4">class</span><span class="hl-1"> </span><span class="hl-8">Person</span><span class="hl-1"> </span><span class="hl-4">extends</span><span class="hl-1"> </span><span class="hl-8">DataModel</span><span class="hl-1"> {</span><br/><br/><span class="hl-1">    </span><span class="hl-4">public</span><span class="hl-1"> </span><span class="hl-4">static</span><span class="hl-1"> </span><span class="hl-0">finder</span><span class="hl-1"> = </span><span class="hl-4">new</span><span class="hl-1"> </span><span class="hl-6">DataFinder</span><span class="hl-1">&lt;</span><span class="hl-8">Person</span><span class="hl-1">&gt;(</span><br/><span class="hl-1">            </span><span class="hl-0">DataSource</span><span class="hl-1">.</span><span class="hl-5">DEFAULT</span><span class="hl-1">, </span><span class="hl-7">// The data source</span><br/><span class="hl-1">            </span><span class="hl-3">&quot;persons&quot;</span><span class="hl-1">, </span><span class="hl-7">// The table or collection name</span><br/><span class="hl-1">            </span><span class="hl-3">&quot;name&quot;</span><span class="hl-1"> </span><span class="hl-7">// The primary key. Leave blank if no primary key</span><br/><span class="hl-1">            (</span><span class="hl-0">data</span><span class="hl-1">: </span><span class="hl-8">GenericRow</span><span class="hl-1">) </span><span class="hl-4">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">                </span><span class="hl-2">return</span><span class="hl-1"> </span><span class="hl-4">new</span><span class="hl-1"> </span><span class="hl-6">Person</span><span class="hl-1">(</span><span class="hl-0">data</span><span class="hl-1">);</span><br/><span class="hl-1">            },</span><br/><span class="hl-1">    );</span><br/><br/><span class="hl-1">    </span><span class="hl-4">public</span><span class="hl-1"> </span><span class="hl-0">name</span><span class="hl-1">: </span><span class="hl-8">string</span><span class="hl-1">;</span><br/><span class="hl-1">    </span><span class="hl-4">public</span><span class="hl-1"> </span><span class="hl-0">age</span><span class="hl-1">: </span><span class="hl-8">number</span><span class="hl-1">;</span><br/><br/><span class="hl-1">    </span><span class="hl-4">constructor</span><span class="hl-1">(</span><span class="hl-0">data</span><span class="hl-1">: </span><span class="hl-8">GenericRow</span><span class="hl-1">) {</span><br/><span class="hl-1">        </span><span class="hl-7">// First, we call DataModel constructor </span><br/><span class="hl-1">        </span><span class="hl-4">super</span><span class="hl-1">(</span><br/><span class="hl-1">            </span><span class="hl-0">DataSource</span><span class="hl-1">.</span><span class="hl-5">DEFAULT</span><span class="hl-1">, </span><span class="hl-7">// The data source</span><br/><span class="hl-1">            </span><span class="hl-3">&quot;persons&quot;</span><span class="hl-1">, </span><span class="hl-7">// The table or collection name</span><br/><span class="hl-1">            </span><span class="hl-3">&quot;name&quot;</span><span class="hl-1"> </span><span class="hl-7">// The primary key. Leave blank if no primary key</span><br/><span class="hl-1">        );</span><br/><br/><span class="hl-1">        </span><span class="hl-7">// Second, we set the class properties</span><br/><span class="hl-1">        </span><span class="hl-7">// The recommended way is to set one by one to prevent prototype pollution</span><br/><span class="hl-1">        </span><span class="hl-7">// You can also enforce the types if you do not trust the data source</span><br/><span class="hl-1">        </span><span class="hl-7">// In that case you can use the enforceType utility function</span><br/><br/><span class="hl-1">        </span><span class="hl-4">this</span><span class="hl-1">.</span><span class="hl-0">name</span><span class="hl-1"> = </span><span class="hl-6">enforceType</span><span class="hl-1">(</span><span class="hl-0">data</span><span class="hl-1">.</span><span class="hl-0">name</span><span class="hl-1">, </span><span class="hl-3">&quot;string&quot;</span><span class="hl-1">);</span><br/><span class="hl-1">        </span><span class="hl-4">this</span><span class="hl-1">.</span><span class="hl-0">age</span><span class="hl-1"> = </span><span class="hl-6">enforceType</span><span class="hl-1">(</span><span class="hl-0">data</span><span class="hl-1">.</span><span class="hl-0">age</span><span class="hl-1">, </span><span class="hl-3">&quot;int&quot;</span><span class="hl-1">);</span><br/><br/><span class="hl-1">        </span><span class="hl-7">// Finally, we must call init()</span><br/><span class="hl-1">        </span><span class="hl-4">this</span><span class="hl-1">.</span><span class="hl-6">init</span><span class="hl-1">();</span><br/><span class="hl-1">    }</span><br/><span class="hl-1">}</span>
 </code></pre>
-				<p>Main finder classes:</p>
-				<ul>
-					<li>DataFinder: The finder for a data model</li>
-					<li>DataFilter: Allows setting filters for the data</li>
-					<li>OrderBy: Sets the order of the received data</li>
-					<li>SelectOptions: Sets options like the max number of rows or the projection.</li>
-				</ul>
-				<p>You can use the finder to find instances of your data model, or apply updates or deletions to many of them. </p>
-				<p>Here are some examples using the <code>Person</code> model:</p>
-				<pre><code class="language-ts"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">DataModel</span><span style="color: #000000">, </span><span style="color: #001080">GenericRow</span><span style="color: #000000">, </span><span style="color: #001080">DataSource</span><span style="color: #000000">, </span><span style="color: #001080">DataFinder</span><span style="color: #000000">, </span><span style="color: #001080">DataFilter</span><span style="color: #000000">, </span><span style="color: #001080">OrderBy</span><span style="color: #000000">, </span><span style="color: #001080">SelectOptions</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;tsbean-orm&quot;</span><span style="color: #000000">;</span>
-
-<span style="color: #0000FF">async</span><span style="color: #000000"> </span><span style="color: #0000FF">function</span><span style="color: #000000"> </span><span style="color: #795E26">main</span><span style="color: #000000">() {</span>
-<span style="color: #000000">    </span><span style="color: #008000">// Find person with name &quot;person1&quot;</span>
-<span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">person1</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">Person</span><span style="color: #000000">.</span><span style="color: #001080">finder</span><span style="color: #000000">.</span><span style="color: #795E26">findByKey</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;person1&quot;</span><span style="color: #000000">);</span>
-
-<span style="color: #000000">    </span><span style="color: #008000">// Find persons with age = 20</span>
-<span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">personsAge20</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">Person</span><span style="color: #000000">.</span><span style="color: #001080">finder</span><span style="color: #000000">.</span><span style="color: #795E26">find</span><span style="color: #000000">(</span><span style="color: #001080">DataFilter</span><span style="color: #000000">.</span><span style="color: #795E26">equals</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;age&quot;</span><span style="color: #000000">, </span><span style="color: #098658">20</span><span style="color: #000000">));</span>
-
-<span style="color: #000000">    </span><span style="color: #008000">// Find persons with age &gt;= 20 &amp;&amp; age &lt;= 50, ordered by age, limit of 10</span>
-<span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">personsAge20To50</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">Person</span><span style="color: #000000">.</span><span style="color: #001080">finder</span><span style="color: #000000">.</span><span style="color: #795E26">find</span><span style="color: #000000">(</span>
-<span style="color: #000000">        </span><span style="color: #001080">DataFilter</span><span style="color: #000000">.</span><span style="color: #795E26">and</span><span style="color: #000000">(</span>
-<span style="color: #000000">            </span><span style="color: #001080">DataFilter</span><span style="color: #000000">.</span><span style="color: #795E26">greaterOrEquals</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;age&quot;</span><span style="color: #000000">, </span><span style="color: #098658">20</span><span style="color: #000000">),</span>
-<span style="color: #000000">            </span><span style="color: #001080">DataFilter</span><span style="color: #000000">.</span><span style="color: #795E26">lessOrEquals</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;age&quot;</span><span style="color: #000000">, </span><span style="color: #098658">50</span><span style="color: #000000">)</span>
-<span style="color: #000000">        ),</span>
-<span style="color: #000000">        </span><span style="color: #001080">OrderBy</span><span style="color: #000000">.</span><span style="color: #795E26">asc</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;age&quot;</span><span style="color: #000000">),</span>
-<span style="color: #000000">        </span><span style="color: #001080">SelectOptions</span><span style="color: #000000">.</span><span style="color: #795E26">configure</span><span style="color: #000000">().</span><span style="color: #795E26">setMaxRows</span><span style="color: #000000">(</span><span style="color: #098658">10</span><span style="color: #000000">),</span>
-<span style="color: #000000">    );</span>
-
-<span style="color: #000000">    </span><span style="color: #008000">// Update persons with age = 20, set age = 21</span>
-<span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">rowsAffected</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">Person</span><span style="color: #000000">.</span><span style="color: #001080">finder</span><span style="color: #000000">.</span><span style="color: #795E26">update</span><span style="color: #000000">({ </span><span style="color: #001080">age:</span><span style="color: #000000"> </span><span style="color: #098658">21</span><span style="color: #000000"> }, </span><span style="color: #001080">DataFilter</span><span style="color: #000000">.</span><span style="color: #795E26">equals</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;age&quot;</span><span style="color: #000000">, </span><span style="color: #098658">20</span><span style="color: #000000">));</span>
-
-<span style="color: #000000">    </span><span style="color: #008000">// Delete persons with age = 30</span>
-<span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">rowsAffected2</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">Person</span><span style="color: #000000">.</span><span style="color: #001080">finder</span><span style="color: #000000">.</span><span style="color: #795E26">delete</span><span style="color: #000000">(</span><span style="color: #001080">DataFilter</span><span style="color: #000000">.</span><span style="color: #795E26">equals</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;age&quot;</span><span style="color: #000000">, </span><span style="color: #098658">30</span><span style="color: #000000">));</span>
-<span style="color: #000000">}</span>
+<p>Main finder classes:</p>
+<ul>
+<li>DataFinder: The finder for a data model</li>
+<li>DataFilter: Allows setting filters for the data</li>
+<li>OrderBy: Sets the order of the received data</li>
+<li>SelectOptions: Sets options like the max number of rows or the projection.</li>
+</ul>
+<p>You can use the finder to find instances of your data model, or apply updates or deletions to many of them. </p>
+<p>Here are some examples using the <code>Person</code> model:</p>
+<pre><code class="language-ts"><span class="hl-2">import</span><span class="hl-1"> { </span><span class="hl-0">DataModel</span><span class="hl-1">, </span><span class="hl-0">GenericRow</span><span class="hl-1">, </span><span class="hl-0">DataSource</span><span class="hl-1">, </span><span class="hl-0">DataFinder</span><span class="hl-1">, </span><span class="hl-0">DataFilter</span><span class="hl-1">, </span><span class="hl-0">OrderBy</span><span class="hl-1">, </span><span class="hl-0">SelectOptions</span><span class="hl-1"> } </span><span class="hl-2">from</span><span class="hl-1"> </span><span class="hl-3">&quot;tsbean-orm&quot;</span><span class="hl-1">;</span><br/><br/><span class="hl-4">async</span><span class="hl-1"> </span><span class="hl-4">function</span><span class="hl-1"> </span><span class="hl-6">main</span><span class="hl-1">() {</span><br/><span class="hl-1">    </span><span class="hl-7">// Find person with name &quot;person1&quot;</span><br/><span class="hl-1">    </span><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">person1</span><span class="hl-1"> = </span><span class="hl-2">await</span><span class="hl-1"> </span><span class="hl-0">Person</span><span class="hl-1">.</span><span class="hl-0">finder</span><span class="hl-1">.</span><span class="hl-6">findByKey</span><span class="hl-1">(</span><span class="hl-3">&quot;person1&quot;</span><span class="hl-1">);</span><br/><br/><span class="hl-1">    </span><span class="hl-7">// Find persons with age = 20</span><br/><span class="hl-1">    </span><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">personsAge20</span><span class="hl-1"> = </span><span class="hl-2">await</span><span class="hl-1"> </span><span class="hl-0">Person</span><span class="hl-1">.</span><span class="hl-0">finder</span><span class="hl-1">.</span><span class="hl-6">find</span><span class="hl-1">(</span><span class="hl-0">DataFilter</span><span class="hl-1">.</span><span class="hl-6">equals</span><span class="hl-1">(</span><span class="hl-3">&quot;age&quot;</span><span class="hl-1">, </span><span class="hl-9">20</span><span class="hl-1">));</span><br/><br/><span class="hl-1">    </span><span class="hl-7">// Find persons with age &gt;= 20 &amp;&amp; age &lt;= 50, ordered by age, limit of 10</span><br/><span class="hl-1">    </span><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">personsAge20To50</span><span class="hl-1"> = </span><span class="hl-2">await</span><span class="hl-1"> </span><span class="hl-0">Person</span><span class="hl-1">.</span><span class="hl-0">finder</span><span class="hl-1">.</span><span class="hl-6">find</span><span class="hl-1">(</span><br/><span class="hl-1">        </span><span class="hl-0">DataFilter</span><span class="hl-1">.</span><span class="hl-6">and</span><span class="hl-1">(</span><br/><span class="hl-1">            </span><span class="hl-0">DataFilter</span><span class="hl-1">.</span><span class="hl-6">greaterOrEquals</span><span class="hl-1">(</span><span class="hl-3">&quot;age&quot;</span><span class="hl-1">, </span><span class="hl-9">20</span><span class="hl-1">),</span><br/><span class="hl-1">            </span><span class="hl-0">DataFilter</span><span class="hl-1">.</span><span class="hl-6">lessOrEquals</span><span class="hl-1">(</span><span class="hl-3">&quot;age&quot;</span><span class="hl-1">, </span><span class="hl-9">50</span><span class="hl-1">)</span><br/><span class="hl-1">        ),</span><br/><span class="hl-1">        </span><span class="hl-0">OrderBy</span><span class="hl-1">.</span><span class="hl-6">asc</span><span class="hl-1">(</span><span class="hl-3">&quot;age&quot;</span><span class="hl-1">),</span><br/><span class="hl-1">        </span><span class="hl-0">SelectOptions</span><span class="hl-1">.</span><span class="hl-6">configure</span><span class="hl-1">().</span><span class="hl-6">setMaxRows</span><span class="hl-1">(</span><span class="hl-9">10</span><span class="hl-1">),</span><br/><span class="hl-1">    );</span><br/><br/><span class="hl-1">    </span><span class="hl-7">// Update persons with age = 20, set age = 21</span><br/><span class="hl-1">    </span><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">rowsAffected</span><span class="hl-1"> = </span><span class="hl-2">await</span><span class="hl-1"> </span><span class="hl-0">Person</span><span class="hl-1">.</span><span class="hl-0">finder</span><span class="hl-1">.</span><span class="hl-6">update</span><span class="hl-1">({ </span><span class="hl-0">age:</span><span class="hl-1"> </span><span class="hl-9">21</span><span class="hl-1"> }, </span><span class="hl-0">DataFilter</span><span class="hl-1">.</span><span class="hl-6">equals</span><span class="hl-1">(</span><span class="hl-3">&quot;age&quot;</span><span class="hl-1">, </span><span class="hl-9">20</span><span class="hl-1">));</span><br/><br/><span class="hl-1">    </span><span class="hl-7">// Delete persons with age = 30</span><br/><span class="hl-1">    </span><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">rowsAffected2</span><span class="hl-1"> = </span><span class="hl-2">await</span><span class="hl-1"> </span><span class="hl-0">Person</span><span class="hl-1">.</span><span class="hl-0">finder</span><span class="hl-1">.</span><span class="hl-6">delete</span><span class="hl-1">(</span><span class="hl-0">DataFilter</span><span class="hl-1">.</span><span class="hl-6">equals</span><span class="hl-1">(</span><span class="hl-3">&quot;age&quot;</span><span class="hl-1">, </span><span class="hl-9">30</span><span class="hl-1">));</span><br/><span class="hl-1">}</span>
 </code></pre>
-				<a href="#insert" id="insert" style="color: inherit; text-decoration: none;">
-					<h2>Insert</h2>
-				</a>
-				<p>In order to insert a new instance of you data model into the data source, you have to create it using the <code>new</code> keyword and then call the <code>insert</code> method:</p>
-				<pre><code class="language-ts"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">DataModel</span><span style="color: #000000">, </span><span style="color: #001080">GenericRow</span><span style="color: #000000">, </span><span style="color: #001080">DataSource</span><span style="color: #000000">, </span><span style="color: #001080">DataFinder</span><span style="color: #000000">, </span><span style="color: #001080">DataFilter</span><span style="color: #000000">, </span><span style="color: #001080">OrderBy</span><span style="color: #000000">, </span><span style="color: #001080">SelectOptions</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;tsbean-orm&quot;</span><span style="color: #000000">;</span>
 
-<span style="color: #0000FF">async</span><span style="color: #000000"> </span><span style="color: #0000FF">function</span><span style="color: #000000"> </span><span style="color: #795E26">main</span><span style="color: #000000">() {</span>
-<span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">person</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Person</span><span style="color: #000000">({</span>
-<span style="color: #000000">        </span><span style="color: #001080">name:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;example&quot;</span><span style="color: #000000">,</span>
-<span style="color: #000000">        </span><span style="color: #001080">age:</span><span style="color: #000000"> </span><span style="color: #098658">40</span><span style="color: #000000">,</span>
-<span style="color: #000000">    });</span>
-
-<span style="color: #000000">    </span><span style="color: #AF00DB">try</span><span style="color: #000000"> {</span>
-<span style="color: #000000">        </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">person</span><span style="color: #000000">.</span><span style="color: #795E26">insert</span><span style="color: #000000">();</span>
-<span style="color: #000000">    } </span><span style="color: #AF00DB">catch</span><span style="color: #000000"> (</span><span style="color: #001080">ex</span><span style="color: #000000">) {</span>
-<span style="color: #000000">        </span><span style="color: #008000">// The most common error may be duplicated primary key</span>
-<span style="color: #000000">    }</span>
-<span style="color: #000000">}</span>
+<a href="#insert" id="insert" style="color: inherit; text-decoration: none;">
+  <h2>Insert</h2>
+</a>
+<p>In order to insert a new instance of you data model into the data source, you have to create it using the <code>new</code> keyword and then call the <code>insert</code> method:</p>
+<pre><code class="language-ts"><span class="hl-2">import</span><span class="hl-1"> { </span><span class="hl-0">DataModel</span><span class="hl-1">, </span><span class="hl-0">GenericRow</span><span class="hl-1">, </span><span class="hl-0">DataSource</span><span class="hl-1">, </span><span class="hl-0">DataFinder</span><span class="hl-1">, </span><span class="hl-0">DataFilter</span><span class="hl-1">, </span><span class="hl-0">OrderBy</span><span class="hl-1">, </span><span class="hl-0">SelectOptions</span><span class="hl-1"> } </span><span class="hl-2">from</span><span class="hl-1"> </span><span class="hl-3">&quot;tsbean-orm&quot;</span><span class="hl-1">;</span><br/><br/><span class="hl-4">async</span><span class="hl-1"> </span><span class="hl-4">function</span><span class="hl-1"> </span><span class="hl-6">main</span><span class="hl-1">() {</span><br/><span class="hl-1">    </span><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">person</span><span class="hl-1"> = </span><span class="hl-4">new</span><span class="hl-1"> </span><span class="hl-6">Person</span><span class="hl-1">({</span><br/><span class="hl-1">        </span><span class="hl-0">name:</span><span class="hl-1"> </span><span class="hl-3">&quot;example&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">        </span><span class="hl-0">age:</span><span class="hl-1"> </span><span class="hl-9">40</span><span class="hl-1">,</span><br/><span class="hl-1">    });</span><br/><br/><span class="hl-1">    </span><span class="hl-2">try</span><span class="hl-1"> {</span><br/><span class="hl-1">        </span><span class="hl-2">await</span><span class="hl-1"> </span><span class="hl-0">person</span><span class="hl-1">.</span><span class="hl-6">insert</span><span class="hl-1">();</span><br/><span class="hl-1">    } </span><span class="hl-2">catch</span><span class="hl-1"> (</span><span class="hl-0">ex</span><span class="hl-1">) {</span><br/><span class="hl-1">        </span><span class="hl-7">// The most common error may be duplicated primary key</span><br/><span class="hl-1">    }</span><br/><span class="hl-1">}</span>
 </code></pre>
-				<a href="#update" id="update" style="color: inherit; text-decoration: none;">
-					<h2>Update</h2>
-				</a>
-				<p>Once you find a model using a finder object, you can update its properties and then save it, to apply the changes to the data source. In order to do that, use the <code>save</code>  method.</p>
-				<pre><code class="language-ts"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">DataModel</span><span style="color: #000000">, </span><span style="color: #001080">GenericRow</span><span style="color: #000000">, </span><span style="color: #001080">DataSource</span><span style="color: #000000">, </span><span style="color: #001080">DataFinder</span><span style="color: #000000">, </span><span style="color: #001080">DataFilter</span><span style="color: #000000">, </span><span style="color: #001080">OrderBy</span><span style="color: #000000">, </span><span style="color: #001080">SelectOptions</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;tsbean-orm&quot;</span><span style="color: #000000">;</span>
 
-<span style="color: #0000FF">async</span><span style="color: #000000"> </span><span style="color: #0000FF">function</span><span style="color: #000000"> </span><span style="color: #795E26">main</span><span style="color: #000000">() {</span>
-<span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">person</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">Person</span><span style="color: #000000">.</span><span style="color: #001080">finder</span><span style="color: #000000">.</span><span style="color: #795E26">findByKey</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;example&quot;</span><span style="color: #000000">);</span>
-
-<span style="color: #000000">    </span><span style="color: #AF00DB">if</span><span style="color: #000000"> (</span><span style="color: #001080">person</span><span style="color: #000000">) {</span>
-<span style="color: #000000">        </span><span style="color: #001080">person</span><span style="color: #000000">.</span><span style="color: #001080">age</span><span style="color: #000000"> = </span><span style="color: #098658">60</span><span style="color: #000000">;</span>
-<span style="color: #000000">        </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">person</span><span style="color: #000000">.</span><span style="color: #795E26">save</span><span style="color: #000000">();</span>
-<span style="color: #000000">    }</span>
-<span style="color: #000000">}</span>
+<a href="#update" id="update" style="color: inherit; text-decoration: none;">
+  <h2>Update</h2>
+</a>
+<p>Once you find a model using a finder object, you can update its properties and then save it, to apply the changes to the data source. In order to do that, use the <code>save</code>  method.</p>
+<pre><code class="language-ts"><span class="hl-2">import</span><span class="hl-1"> { </span><span class="hl-0">DataModel</span><span class="hl-1">, </span><span class="hl-0">GenericRow</span><span class="hl-1">, </span><span class="hl-0">DataSource</span><span class="hl-1">, </span><span class="hl-0">DataFinder</span><span class="hl-1">, </span><span class="hl-0">DataFilter</span><span class="hl-1">, </span><span class="hl-0">OrderBy</span><span class="hl-1">, </span><span class="hl-0">SelectOptions</span><span class="hl-1"> } </span><span class="hl-2">from</span><span class="hl-1"> </span><span class="hl-3">&quot;tsbean-orm&quot;</span><span class="hl-1">;</span><br/><br/><span class="hl-4">async</span><span class="hl-1"> </span><span class="hl-4">function</span><span class="hl-1"> </span><span class="hl-6">main</span><span class="hl-1">() {</span><br/><span class="hl-1">    </span><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">person</span><span class="hl-1"> = </span><span class="hl-2">await</span><span class="hl-1"> </span><span class="hl-0">Person</span><span class="hl-1">.</span><span class="hl-0">finder</span><span class="hl-1">.</span><span class="hl-6">findByKey</span><span class="hl-1">(</span><span class="hl-3">&quot;example&quot;</span><span class="hl-1">);</span><br/><br/><span class="hl-1">    </span><span class="hl-2">if</span><span class="hl-1"> (</span><span class="hl-0">person</span><span class="hl-1">) {</span><br/><span class="hl-1">        </span><span class="hl-0">person</span><span class="hl-1">.</span><span class="hl-0">age</span><span class="hl-1"> = </span><span class="hl-9">60</span><span class="hl-1">;</span><br/><span class="hl-1">        </span><span class="hl-2">await</span><span class="hl-1"> </span><span class="hl-0">person</span><span class="hl-1">.</span><span class="hl-6">save</span><span class="hl-1">();</span><br/><span class="hl-1">    }</span><br/><span class="hl-1">}</span>
 </code></pre>
-				<a href="#delete" id="delete" style="color: inherit; text-decoration: none;">
-					<h2>Delete</h2>
-				</a>
-				<p>Once you find a model using a finder object, you can also delete it, using the <code>delete</code> method.</p>
-				<pre><code class="language-ts"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">DataModel</span><span style="color: #000000">, </span><span style="color: #001080">GenericRow</span><span style="color: #000000">, </span><span style="color: #001080">DataSource</span><span style="color: #000000">, </span><span style="color: #001080">DataFinder</span><span style="color: #000000">, </span><span style="color: #001080">DataFilter</span><span style="color: #000000">, </span><span style="color: #001080">OrderBy</span><span style="color: #000000">, </span><span style="color: #001080">SelectOptions</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;tsbean-orm&quot;</span><span style="color: #000000">;</span>
 
-<span style="color: #0000FF">async</span><span style="color: #000000"> </span><span style="color: #0000FF">function</span><span style="color: #000000"> </span><span style="color: #795E26">main</span><span style="color: #000000">() {</span>
-<span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">person</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">Person</span><span style="color: #000000">.</span><span style="color: #001080">finder</span><span style="color: #000000">.</span><span style="color: #795E26">findByKey</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;example&quot;</span><span style="color: #000000">);</span>
-
-<span style="color: #000000">    </span><span style="color: #AF00DB">if</span><span style="color: #000000"> (</span><span style="color: #001080">person</span><span style="color: #000000">) {</span>
-<span style="color: #000000">        </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">person</span><span style="color: #000000">.</span><span style="color: #795E26">delete</span><span style="color: #000000">();</span>
-<span style="color: #000000">    }</span>
-<span style="color: #000000">}</span>
+<a href="#delete" id="delete" style="color: inherit; text-decoration: none;">
+  <h2>Delete</h2>
+</a>
+<p>Once you find a model using a finder object, you can also delete it, using the <code>delete</code> method.</p>
+<pre><code class="language-ts"><span class="hl-2">import</span><span class="hl-1"> { </span><span class="hl-0">DataModel</span><span class="hl-1">, </span><span class="hl-0">GenericRow</span><span class="hl-1">, </span><span class="hl-0">DataSource</span><span class="hl-1">, </span><span class="hl-0">DataFinder</span><span class="hl-1">, </span><span class="hl-0">DataFilter</span><span class="hl-1">, </span><span class="hl-0">OrderBy</span><span class="hl-1">, </span><span class="hl-0">SelectOptions</span><span class="hl-1"> } </span><span class="hl-2">from</span><span class="hl-1"> </span><span class="hl-3">&quot;tsbean-orm&quot;</span><span class="hl-1">;</span><br/><br/><span class="hl-4">async</span><span class="hl-1"> </span><span class="hl-4">function</span><span class="hl-1"> </span><span class="hl-6">main</span><span class="hl-1">() {</span><br/><span class="hl-1">    </span><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">person</span><span class="hl-1"> = </span><span class="hl-2">await</span><span class="hl-1"> </span><span class="hl-0">Person</span><span class="hl-1">.</span><span class="hl-0">finder</span><span class="hl-1">.</span><span class="hl-6">findByKey</span><span class="hl-1">(</span><span class="hl-3">&quot;example&quot;</span><span class="hl-1">);</span><br/><br/><span class="hl-1">    </span><span class="hl-2">if</span><span class="hl-1"> (</span><span class="hl-0">person</span><span class="hl-1">) {</span><br/><span class="hl-1">        </span><span class="hl-2">await</span><span class="hl-1"> </span><span class="hl-0">person</span><span class="hl-1">.</span><span class="hl-6">delete</span><span class="hl-1">();</span><br/><span class="hl-1">    }</span><br/><span class="hl-1">}</span>
 </code></pre>
-				<a href="#serialize" id="serialize" style="color: inherit; text-decoration: none;">
-					<h2>Serialize</h2>
-				</a>
-				<p>Since the DataModel objects are circular structures, you cannot simply serialize them with <code>JSON.stringify</code>. Instead, DataModel class offers 2 method to serialize it:</p>
-				<ul>
-					<li>toObject: Turns the DataModel instance into a plain key-values object.</li>
-					<li>ToJSON: Turns the DataModel instance intoa JSON string</li>
-				</ul>
-				<pre><code class="language-ts"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">DataModel</span><span style="color: #000000">, </span><span style="color: #001080">GenericRow</span><span style="color: #000000">, </span><span style="color: #001080">DataSource</span><span style="color: #000000">, </span><span style="color: #001080">DataFinder</span><span style="color: #000000">, </span><span style="color: #001080">DataFilter</span><span style="color: #000000">, </span><span style="color: #001080">OrderBy</span><span style="color: #000000">, </span><span style="color: #001080">SelectOptions</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;tsbean-orm&quot;</span><span style="color: #000000">;</span>
 
-<span style="color: #0000FF">async</span><span style="color: #000000"> </span><span style="color: #0000FF">function</span><span style="color: #000000"> </span><span style="color: #795E26">main</span><span style="color: #000000">() {</span>
-<span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">person</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">Person</span><span style="color: #000000">.</span><span style="color: #001080">finder</span><span style="color: #000000">.</span><span style="color: #795E26">findByKey</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;example&quot;</span><span style="color: #000000">);</span>
-
-<span style="color: #000000">    </span><span style="color: #AF00DB">if</span><span style="color: #000000"> (</span><span style="color: #001080">person</span><span style="color: #000000">) {</span>
-<span style="color: #000000">        </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;Person Found: &quot;</span><span style="color: #000000"> + </span><span style="color: #001080">person</span><span style="color: #000000">.</span><span style="color: #795E26">toJSON</span><span style="color: #000000">());</span>
-<span style="color: #000000">    }</span>
-
-<span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">people</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">Person</span><span style="color: #000000">.</span><span style="color: #001080">finder</span><span style="color: #000000">.</span><span style="color: #795E26">find</span><span style="color: #000000">(</span><span style="color: #001080">DataFilter</span><span style="color: #000000">.</span><span style="color: #795E26">any</span><span style="color: #000000">());</span>
-
-<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;People Found: &quot;</span><span style="color: #000000"> + </span><span style="color: #267F99">JSON</span><span style="color: #000000">.</span><span style="color: #795E26">stringify</span><span style="color: #000000">(</span><span style="color: #001080">people</span><span style="color: #000000">.</span><span style="color: #795E26">map</span><span style="color: #000000">(</span><span style="color: #001080">p</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #001080">p</span><span style="color: #000000">.</span><span style="color: #795E26">toObject</span><span style="color: #000000">())));</span>
-<span style="color: #000000">}</span>
+<a href="#serialize" id="serialize" style="color: inherit; text-decoration: none;">
+  <h2>Serialize</h2>
+</a>
+<p>Since the DataModel objects are circular structures, you cannot simply serialize them with <code>JSON.stringify</code>. Instead, DataModel class offers 2 method to serialize it:</p>
+<ul>
+<li>toObject: Turns the DataModel instance into a plain key-values object.</li>
+<li>ToJSON: Turns the DataModel instance intoa JSON string</li>
+</ul>
+<pre><code class="language-ts"><span class="hl-2">import</span><span class="hl-1"> { </span><span class="hl-0">DataModel</span><span class="hl-1">, </span><span class="hl-0">GenericRow</span><span class="hl-1">, </span><span class="hl-0">DataSource</span><span class="hl-1">, </span><span class="hl-0">DataFinder</span><span class="hl-1">, </span><span class="hl-0">DataFilter</span><span class="hl-1">, </span><span class="hl-0">OrderBy</span><span class="hl-1">, </span><span class="hl-0">SelectOptions</span><span class="hl-1"> } </span><span class="hl-2">from</span><span class="hl-1"> </span><span class="hl-3">&quot;tsbean-orm&quot;</span><span class="hl-1">;</span><br/><br/><span class="hl-4">async</span><span class="hl-1"> </span><span class="hl-4">function</span><span class="hl-1"> </span><span class="hl-6">main</span><span class="hl-1">() {</span><br/><span class="hl-1">    </span><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">person</span><span class="hl-1"> = </span><span class="hl-2">await</span><span class="hl-1"> </span><span class="hl-0">Person</span><span class="hl-1">.</span><span class="hl-0">finder</span><span class="hl-1">.</span><span class="hl-6">findByKey</span><span class="hl-1">(</span><span class="hl-3">&quot;example&quot;</span><span class="hl-1">);</span><br/><br/><span class="hl-1">    </span><span class="hl-2">if</span><span class="hl-1"> (</span><span class="hl-0">person</span><span class="hl-1">) {</span><br/><span class="hl-1">        </span><span class="hl-0">console</span><span class="hl-1">.</span><span class="hl-6">log</span><span class="hl-1">(</span><span class="hl-3">&quot;Person Found: &quot;</span><span class="hl-1"> + </span><span class="hl-0">person</span><span class="hl-1">.</span><span class="hl-6">toJSON</span><span class="hl-1">());</span><br/><span class="hl-1">    }</span><br/><br/><span class="hl-1">    </span><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">people</span><span class="hl-1"> = </span><span class="hl-2">await</span><span class="hl-1"> </span><span class="hl-0">Person</span><span class="hl-1">.</span><span class="hl-0">finder</span><span class="hl-1">.</span><span class="hl-6">find</span><span class="hl-1">(</span><span class="hl-0">DataFilter</span><span class="hl-1">.</span><span class="hl-6">any</span><span class="hl-1">());</span><br/><br/><span class="hl-1">    </span><span class="hl-0">console</span><span class="hl-1">.</span><span class="hl-6">log</span><span class="hl-1">(</span><span class="hl-3">&quot;People Found: &quot;</span><span class="hl-1"> + </span><span class="hl-8">JSON</span><span class="hl-1">.</span><span class="hl-6">stringify</span><span class="hl-1">(</span><span class="hl-0">people</span><span class="hl-1">.</span><span class="hl-6">map</span><span class="hl-1">(</span><span class="hl-0">p</span><span class="hl-1"> </span><span class="hl-4">=&gt;</span><span class="hl-1"> </span><span class="hl-0">p</span><span class="hl-1">.</span><span class="hl-6">toObject</span><span class="hl-1">())));</span><br/><span class="hl-1">}</span>
 </code></pre>
-			</div>
-		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class=" ">
-						<a href="modules.html">Exports</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/bean.html">bean</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/dao.html">dao</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/data_source.html">data-<wbr>source</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/filtering.html">filtering</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/index.html">index</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/util.html">util</a>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-				</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<footer class="with-border-bottom">
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-			</ul>
-		</div>
-	</div>
-</footer>
-<div class="container tsd-generator">
-	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
-</div>
-<div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-</body>
-</html>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-class"><a href="classes/DataAccessObject.html" class="tsd-kind-icon">Data<wbr/>Access<wbr/>Object</a></li><li class="tsd-kind-class"><a href="classes/DataFilter.html" class="tsd-kind-icon">Data<wbr/>Filter</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/DataFinder.html" class="tsd-kind-icon">Data<wbr/>Finder</a></li><li class="tsd-kind-class"><a href="classes/DataModel.html" class="tsd-kind-icon">Data<wbr/>Model</a></li><li class="tsd-kind-class"><a href="classes/DataSource.html" class="tsd-kind-icon">Data<wbr/>Source</a></li><li class="tsd-kind-class"><a href="classes/OrderBy.html" class="tsd-kind-icon">Order<wbr/>By</a></li><li class="tsd-kind-class"><a href="classes/SelectOptions.html" class="tsd-kind-icon">Select<wbr/>Options</a></li><li class="tsd-kind-interface"><a href="interfaces/DataSourceDriver.html" class="tsd-kind-icon">Data<wbr/>Source<wbr/>Driver</a></li><li class="tsd-kind-type-alias"><a href="modules.html#GenericFilter" class="tsd-kind-icon">Generic<wbr/>Filter</a></li><li class="tsd-kind-type-alias"><a href="modules.html#GenericKeyValue" class="tsd-kind-icon">Generic<wbr/>Key<wbr/>Value</a></li><li class="tsd-kind-type-alias"><a href="modules.html#GenericRow" class="tsd-kind-icon">Generic<wbr/>Row</a></li><li class="tsd-kind-type-alias"><a href="modules.html#GenericValue" class="tsd-kind-icon">Generic<wbr/>Value</a></li><li class="tsd-kind-type-alias"><a href="modules.html#SortDirection" class="tsd-kind-icon">Sort<wbr/>Direction</a></li><li class="tsd-kind-function"><a href="modules.html#enforceType" class="tsd-kind-icon">enforce<wbr/>Type</a></li><li class="tsd-kind-function"><a href="modules.html#makeCopyOfObject" class="tsd-kind-icon">make<wbr/>Copy<wbr/>Of<wbr/>Object</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li><li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li><li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li><li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>
