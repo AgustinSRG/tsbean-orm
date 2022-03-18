@@ -49,7 +49,7 @@ DataSource.set(DataSource.DEFAULT, mySource);
 
 The recommended architecture when using this project is to create a `models` folder with a class file for each entity of your relational data model.
 
-Check out this tool to automatically generate the model classes: [https://agustinsrg.github.io/tsbean-codegen/](https://agustinsrg.github.io/tsbean-codegen/);
+Check out this tool to automatically generate the model classes: [https://agustinsrg.github.io/tsbean-codegen/](https://agustinsrg.github.io/tsbean-codegen/)
 
 The data models must extend `DataModel`
 
