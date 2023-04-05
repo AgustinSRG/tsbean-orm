@@ -3,32 +3,34 @@
 
 "use strict";
 
-export type GenericKeyValue = string | number | boolean | Date;
+export type ModelKeyName<T> = keyof T & string;
+export type GenericKeyValue = any;
 export type GenericValue = any;
-export type GenericRow = { [key: string]: GenericValue };
+export type GenericRow = any;
+export type TypedRow<T> = { [key in keyof T]?: T[key] };
 export type SortDirection = "asc" | "desc" | null;
 
-interface FilterCompareOperation {
+interface FilterCompareOperation<T = string> {
     operation: "eq" | "ne" | "gt" | "gte" | "lt" | "lte",
-    key: string,
+    key: T,
     value: GenericKeyValue,
 }
 
-interface FilterExistsOperation {
+interface FilterExistsOperation<T = string> {
     operation: "exists",
-    key: string,
+    key: T,
     exists: boolean,
 }
 
-interface FilterIntoOperation {
+interface FilterIntoOperation<T = string> {
     operation: "in",
-    key: string,
+    key: T,
     values: GenericKeyValue[],
 }
 
-interface FilterRegexOperation {
+interface FilterRegexOperation<T = string> {
     operation: "regex",
-    key: string,
+    key: T,
     regexp: RegExp,
 }
 
@@ -47,9 +49,22 @@ interface FilterNotOperation {
     child: FilterOperation,
 }
 
-type FilterOperation = FilterAndOperation | FilterOrOperation | FilterNotOperation | FilterCompareOperation | FilterRegexOperation | FilterExistsOperation | FilterIntoOperation;
+type FilterOperation<T = string> = FilterAndOperation | FilterOrOperation | FilterNotOperation | FilterCompareOperation<T> | FilterRegexOperation<T> | FilterExistsOperation<T> | FilterIntoOperation<T>;
 
-export type GenericFilter = FilterOperation;
+export type GenericFilter<KeySpace = string> = FilterOperation<KeySpace>;
+
+interface RowUpdateSet {
+    update: "set",
+    value: GenericValue,
+}
+
+interface RowUpdateIncrement {
+    update: "inc",
+    value: number,
+}
+
+export type GenericRowUpdate = { [key: string]: RowUpdateSet | RowUpdateIncrement | any };
+export type StrictRowUpdate<T> = { [key in keyof T]?: RowUpdateSet | RowUpdateIncrement | any };
 
 /**
  * Represents a driver to connect to a data source,
@@ -144,10 +159,10 @@ export interface DataSourceDriver {
      * Updates many rows
      * @param table Table or collection name
      * @param filter Filter to apply
-     * @param updated Updated row
+     * @param updated Updates to apply to each row
      * @returns The number of affected rows
      */
-    updateMany(table: string, filter: GenericFilter, updated: GenericRow): Promise<number>;
+    updateMany(table: string, filter: GenericFilter, updated: GenericRowUpdate): Promise<number>;
 
     /* Delete */
 

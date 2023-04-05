@@ -4,8 +4,23 @@
 "use strict";
 
 import { DataAccessObject, makeCopyOfObject } from "./dao";
-import { GenericRow } from "./data-source";
+import { GenericRow, ModelKeyName } from "./data-source";
 import { DataFilter } from "./filtering";
+
+/**
+ * Options to serialize a data model
+ */
+export interface ObjectSerializeOptions<T extends DataModel> {
+    /**
+     * Whitelist. Set the list of fields you want to serialize.
+     */
+    whitelist?: ModelKeyName<T>[];
+
+    /**
+     * Blacklist. Set the list of fields you don't want to serialize.
+     */
+    blacklist: ModelKeyName<T>[];
+}
 
 /**
  * Abstract data model
@@ -45,7 +60,7 @@ export class DataModel {
      * Saves the changes of this model on the database.
      * @param condition Optional. Only saves if a condition is reached.
      */
-    public async save(condition?: DataFilter): Promise<boolean> {
+    public async save(condition?: DataFilter<this>): Promise<boolean> {
         if (this.dao.ref !== this) {
             throw new Error("You must call init() before using persistence methods.");
         }
@@ -77,7 +92,7 @@ export class DataModel {
      * @param field The field to increment
      * @param inc The amount to increment
      */
-    public async increment(field: string, inc: number) {
+    public async increment(field: ModelKeyName<this>, inc: number) {
         if (this.dao.ref !== this) {
             throw new Error("You must call init() before using persistence methods.");
         }
@@ -89,13 +104,13 @@ export class DataModel {
      * @param options Filtering options for properties
      * @returns The plain object
      */
-    public toObject(options?: {whitelist?: string[], blacklist: string[]}): GenericRow {
+    public toObject(options?: ObjectSerializeOptions<this>): GenericRow {
         const copy = makeCopyOfObject(this);
 
         if (options) {
             if (options.whitelist) {
                 for (const k of Object.keys(copy)) {
-                    if (!options.whitelist.includes(k)) {
+                    if (!options.whitelist.includes(<any>k)) {
                         delete copy[k];
                     }
                 }
@@ -103,7 +118,7 @@ export class DataModel {
 
             if (options.blacklist) {
                 for (const k of Object.keys(copy)) {
-                    if (options.blacklist.includes(k)) {
+                    if (options.blacklist.includes(<any>k)) {
                         delete copy[k];
                     }
                 }
@@ -118,7 +133,7 @@ export class DataModel {
      * @param options Filtering options for properties
      * @returns The JSON string
      */
-    public toJSON(options?: {whitelist?: string[], blacklist: string[]}): string {
+    public toJSON(options?: ObjectSerializeOptions<this>): string {
         return JSON.stringify(this.toObject(options));
     }
 }
