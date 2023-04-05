@@ -1,11 +1,11 @@
-// Data Filtering
+// Finder
 // (Typescript Bean ORM)
 
 "use strict";
 
 import { DataModel } from "./bean";
+import { GenericFilter, ModelKeyName, GenericKeyValue, SortDirection, GenericValue, TypedRow, StrictRowUpdate } from "./common";
 import { DataAccessObject } from "./dao";
-import { GenericFilter, GenericKeyValue, GenericRow, GenericValue, ModelKeyName, SortDirection, StrictRowUpdate, TypedRow } from "./data-source";
 import { escapeRegExp } from "./util";
 
 /**
@@ -430,8 +430,8 @@ export class DataFinder<T extends DataModel, PK_Type = GenericKeyValue> {
     }
 
     /**
-     * Summatory for instances
-     * @param field Field to compute summatory
+     * Summation for instances
+     * @param field Field to compute summation
      * @param where Conditions for the instances to match
      */
     public async sum(field: ModelKeyName<T>, where: DataFilter<T>): Promise<number> {

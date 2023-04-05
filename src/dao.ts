@@ -3,217 +3,13 @@
 
 "use strict";
 
-import { DataSource, DataSourceDriver, GenericFilter, GenericKeyValue, GenericRow, GenericRowUpdate, SortDirection } from "./data-source";
-import { DataFilter } from "./filtering";
+import { GenericKeyValue, GenericRow, GenericFilter, SortDirection, GenericRowUpdate } from "./common";
+import { DataSource } from "./data-source";
+import { DataSourceDriver } from "./data-source-driver";
+import { DataFilter } from "./finder";
 
 /**
- * Enforces a type when receiving data from data source
- * @param value The value received from the data source
- * @param type The enforced type ("string" | "number" | "boolean" | "int" | "bigint" | "date" | "object" | "array")
- * @returns The parsed value
- */
-export function enforceType(value: unknown, type: "string" | "number" | "boolean" | "int" | "bigint" | "date" | "object" | "array"): any {
-    if (value === undefined || value === null) {
-        return null;
-    }
-    switch (type) {
-    case "string":
-        return "" + value;
-    case "number":
-        return Number(value);
-    case "boolean":
-        return !!value;
-    case "int":
-        return Math.floor(Number(value));
-    case "bigint":
-        return BigInt(value + "");
-    case "date":
-        if (value instanceof Date) {
-            return value;
-        } else if (typeof value === "string" || typeof value === "number") {
-            return new Date(value);
-        } else {
-            return null;
-        }
-    case "object":
-        if (typeof value === "object") {
-            return value;
-        } else if (typeof value === "string" && value.length > 0) {
-            try {
-                if (value.charAt(0) === "~") {
-                    return JSON.parse(value.substr(1));
-                } else {
-                    return JSON.parse(value);
-                }
-            } catch (ex) {
-                return Object.create(null);
-            }
-        } else {
-            return Object.create(null);
-        }
-    case "array":
-        if (value instanceof Array) {
-            return value;
-        } else if (typeof value === "string" && value.length > 0) {
-            try {
-                let array: any[];
-                if (value.charAt(0) === "~") {
-                    array = JSON.parse(value.substr(1));
-                } else {
-                    array = JSON.parse(value);
-                }
-
-                if (array instanceof Array) {
-                    return array;
-                } else {
-                    return [];
-                }
-            } catch (ex) {
-                return [];
-            }
-        } else {
-            return [];
-        }
-    default:
-        return null;
-    }
-}
-
-/**
- * Makes a copy of a bean object
- * @param original Original bean
- * @returns Copy of the bean
- */
-export function makeCopyOfObject(original: any): any {
-    if (original === null || typeof original !== "object") {
-        return original;
-    }
-    if (original instanceof Array) {
-        const copyArr = [];
-        for (const r of original) {
-            copyArr.push(makeCopyOfObject(r));
-        }
-        return copyArr;
-    }
-    if (original instanceof Date) {
-        return new Date(original.getTime());
-    }
-    const attrs = Object.keys(original);
-    const copy: any = Object.create(null);
-    for (const attr of attrs) {
-        const val = original[attr];
-        if (typeof val === "function" || (val instanceof DataAccessObject)) {
-            continue; // Skip functions and DAOs
-        } else if (typeof val === "object") {
-            copy[attr] = makeCopyOfObject(val);
-        } else {
-            copy[attr] = val;
-        }
-    }
-    return copy;
-}
-
-function getRealkeys(o) {
-    const keys = Object.keys(o);
-    const result = [];
-    for (const key of keys) {
-        const val = o[key];
-        if (typeof val === "function" || (typeof val === "object" && (val instanceof DataAccessObject))) {
-            continue; // Skip functions and DAOs
-        } else {
-            result.push(key);
-        }
-    }
-    return result.sort();
-}
-
-function compareArrays(a1, a2): boolean {
-    if (a1.length !== a2.length) {
-        return false;
-    }
-    for (let i = 0; i < a1.length; i++) {
-        if (a1[i] !== a2[i]) {
-            return false;
-        }
-    }
-    return true;
-}
-
-function getType(o: any): string {
-    const varType = typeof o;
-    if (varType === "object") {
-        if (o === null) {
-            return "null";
-        }
-        if (o instanceof Date) {
-            return "date";
-        }
-        if (o instanceof Array) {
-            return "array";
-        }
-        return "object";
-    } else {
-        return varType;
-    }
-}
-
-function isEqualsRecursive(o1: any, o2: any): boolean {
-    const t1 = getType(o1);
-    const t2 = getType(o2);
-
-    if (t1 !== t2) {
-        return false;
-    }
-
-    switch (t1) {
-    case "date":
-        return o1.getTime() === o2.getTime();
-    case "array":
-        if (o1.length !== o2.length) {
-            return false;
-        }
-        for (let i = 0; i < o1.length; i++) {
-            if (!isEqualsRecursive(o1[i], o2[i])) {
-                return false;
-            }
-        }
-        return true;
-    case "object":
-    {
-        const keys1 = getRealkeys(o1);
-        const keys2 = getRealkeys(o2);
-        if (compareArrays(keys1, keys2)) {
-            for (const key of keys1) {
-                if (!isEqualsRecursive(o1[key], o2[key])) {
-                    return false;
-                }
-            }
-            return true;
-        } else {
-            return false;
-        }
-    }
-    default:
-        return o1 === o2;
-    }
-}
-
-function firstLevelObjectDifference(original: any, changed: any): any {
-    const keys = Object.keys(changed);
-    const changes: any = Object.create(null);
-    for (const key of keys) {
-        const val = changed[key];
-        if (typeof val === "function" || (val instanceof DataAccessObject)) {
-            continue; // Skip functions and DAOs
-        } else if (!isEqualsRecursive(original[key], val)) {
-            changes[key] = val;
-        }
-    }
-    return changes;
-}
-
-/**
- * Data Acess object.
+ * Data Access object.
  */
 export class DataAccessObject {
 
@@ -254,7 +50,7 @@ export class DataAccessObject {
      * @param sortDir "asc" or "desc". Leave as null for default sorting
      * @param skip Number of rows to skip. Leave as -1 for no skip
      * @param limit Limit of results. Leave as -1 for no limit
-     * @param projection List of fields to featch from the table. Leave as null to fetch them all. 
+     * @param projection List of fields to fetch from the table. Leave as null to fetch them all. 
      */
     public static async find(source: string, table: string, filter: GenericFilter, sortBy: string, sortDir: SortDirection, skip: number, limit: number, projection: Set<string>): Promise<GenericRow[]> {
         return DataAccessObject.getDriver(source).find(table, filter, sortBy, sortDir, skip, limit, projection);
@@ -269,7 +65,7 @@ export class DataAccessObject {
      * @param sortDir "asc" or "desc". Leave as null for default sorting
      * @param skip Number of rows to skip. Leave as -1 for no skip
      * @param limit Limit of results. Leave as -1 for no limit
-     * @param projection List of fields to featch from the table. Leave as null to fetch them all. 
+     * @param projection List of fields to fetch from the table. Leave as null to fetch them all. 
      * @param each Function to parse each row
      */
     public static async findStream(source: string, table: string, filter: GenericFilter, sortBy: string, sortDir: SortDirection, skip: number, limit: number, projection: Set<string>, each: (row: GenericRow) => Promise<void>): Promise<void> {
@@ -285,7 +81,7 @@ export class DataAccessObject {
      * @param sortDir "asc" or "desc". Leave as null for default sorting
      * @param skip Number of rows to skip. Leave as -1 for no skip
      * @param limit Limit of results. Leave as -1 for no limit
-     * @param projection List of fields to featch from the table. Leave as null to fetch them all. 
+     * @param projection List of fields to fetch from the table. Leave as null to fetch them all. 
      * @param each Function to parse each row
      */
     public static async findStreamSync(source: string, table: string, filter: GenericFilter, sortBy: string, sortDir: SortDirection, skip: number, limit: number, projection: Set<string>, each: (row: GenericRow) => void): Promise<void> {
@@ -462,4 +258,137 @@ export class DataAccessObject {
         }
         return DataAccessObject.getDriver(this.source).increment(this.table, this.pk, this.original[this.pk], field, inc);
     }
+}
+
+/**
+ * Makes a copy of a bean object
+ * @param original Original bean
+ * @returns Copy of the bean
+ */
+export function makeCopyOfObject(original: any): any {
+    if (original === null || typeof original !== "object") {
+        return original;
+    }
+    if (original instanceof Array) {
+        const copyArr = [];
+        for (const r of original) {
+            copyArr.push(makeCopyOfObject(r));
+        }
+        return copyArr;
+    }
+    if (original instanceof Date) {
+        return new Date(original.getTime());
+    }
+    const attrs = Object.keys(original);
+    const copy: any = Object.create(null);
+    for (const attr of attrs) {
+        const val = original[attr];
+        if (typeof val === "function" || (val instanceof DataAccessObject)) {
+            continue; // Skip functions and DAOs
+        } else if (typeof val === "object") {
+            copy[attr] = makeCopyOfObject(val);
+        } else {
+            copy[attr] = val;
+        }
+    }
+    return copy;
+}
+
+function getRealKeys(o) {
+    const keys = Object.keys(o);
+    const result = [];
+    for (const key of keys) {
+        const val = o[key];
+        if (typeof val === "function" || (typeof val === "object" && (val instanceof DataAccessObject))) {
+            continue; // Skip functions and DAOs
+        } else {
+            result.push(key);
+        }
+    }
+    return result.sort();
+}
+
+function compareArrays(a1, a2): boolean {
+    if (a1.length !== a2.length) {
+        return false;
+    }
+    for (let i = 0; i < a1.length; i++) {
+        if (a1[i] !== a2[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function getType(o: any): string {
+    const varType = typeof o;
+    if (varType === "object") {
+        if (o === null) {
+            return "null";
+        }
+        if (o instanceof Date) {
+            return "date";
+        }
+        if (o instanceof Array) {
+            return "array";
+        }
+        return "object";
+    } else {
+        return varType;
+    }
+}
+
+function isEqualsRecursive(o1: any, o2: any): boolean {
+    const t1 = getType(o1);
+    const t2 = getType(o2);
+
+    if (t1 !== t2) {
+        return false;
+    }
+
+    switch (t1) {
+    case "date":
+        return o1.getTime() === o2.getTime();
+    case "array":
+        if (o1.length !== o2.length) {
+            return false;
+        }
+        for (let i = 0; i < o1.length; i++) {
+            if (!isEqualsRecursive(o1[i], o2[i])) {
+                return false;
+            }
+        }
+        return true;
+    case "object":
+    {
+        const keys1 = getRealKeys(o1);
+        const keys2 = getRealKeys(o2);
+        if (compareArrays(keys1, keys2)) {
+            for (const key of keys1) {
+                if (!isEqualsRecursive(o1[key], o2[key])) {
+                    return false;
+                }
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+    default:
+        return o1 === o2;
+    }
+}
+
+function firstLevelObjectDifference(original: any, changed: any): any {
+    const keys = Object.keys(changed);
+    const changes: any = Object.create(null);
+    for (const key of keys) {
+        const val = changed[key];
+        if (typeof val === "function" || (val instanceof DataAccessObject)) {
+            continue; // Skip functions and DAOs
+        } else if (!isEqualsRecursive(original[key], val)) {
+            changes[key] = val;
+        }
+    }
+    return changes;
 }
