@@ -17,7 +17,7 @@
 <h1>Function enforceType</h1></div>
 <section class="tsd-panel">
 <ul class="tsd-signatures tsd-kind-function">
-<li class="tsd-signature tsd-anchor-link" id="enforceType">enforce<wbr/>Type<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span>, type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">&quot;string&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;number&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;bigint&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;boolean&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;object&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;int&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;date&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;array&quot;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><a href="#enforceType" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" id="icon-anchor-a"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" id="icon-anchor-b"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" id="icon-anchor-c"></path></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="enforceType">enforce<wbr/>Type<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span>, type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">&quot;string&quot;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><a href="#enforceType" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" id="icon-anchor-a"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" id="icon-anchor-b"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" id="icon-anchor-c"></path></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Enforces a type when receiving data from data source</p>
 
@@ -31,12 +31,132 @@
 <div class="tsd-comment tsd-typography"><p>The value received from the data source</p>
 </div></li>
 <li>
-<h5>type: <span class="tsd-signature-type">&quot;string&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;number&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;bigint&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;boolean&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;object&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;int&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;date&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;array&quot;</span></h5>
-<div class="tsd-comment tsd-typography"><p>The enforced type (&quot;string&quot; | &quot;number&quot; | &quot;boolean&quot; | &quot;int&quot; | &quot;bigint&quot; | &quot;date&quot; | &quot;object&quot; | &quot;array&quot;)</p>
+<h5>type: <span class="tsd-signature-type">&quot;string&quot;</span></h5>
+<div class="tsd-comment tsd-typography"><p>The enforced type</p>
+</div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/AgustinSRG/tsbean-orm/blob/bf7738e/src/common.ts#L157">common.ts:157</a></li></ul></aside></li>
+<li class="tsd-signature tsd-anchor-link" id="enforceType-1">enforce<wbr/>Type<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span>, type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">&quot;number&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;int&quot;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><a href="#enforceType-1" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Enforces a type when receiving data from data source</p>
+
+<h3>Returns</h3><p>The parsed value</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5>value: <span class="tsd-signature-type">unknown</span></h5>
+<div class="tsd-comment tsd-typography"><p>The value received from the data source</p>
+</div></li>
+<li>
+<h5>type: <span class="tsd-signature-type">&quot;number&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;int&quot;</span></h5>
+<div class="tsd-comment tsd-typography"><p>The enforced type</p>
+</div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/AgustinSRG/tsbean-orm/blob/bf7738e/src/common.ts#L165">common.ts:165</a></li></ul></aside></li>
+<li class="tsd-signature tsd-anchor-link" id="enforceType-2">enforce<wbr/>Type<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span>, type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">&quot;boolean&quot;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><a href="#enforceType-2" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Enforces a type when receiving data from data source</p>
+
+<h3>Returns</h3><p>The parsed value</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5>value: <span class="tsd-signature-type">unknown</span></h5>
+<div class="tsd-comment tsd-typography"><p>The value received from the data source</p>
+</div></li>
+<li>
+<h5>type: <span class="tsd-signature-type">&quot;boolean&quot;</span></h5>
+<div class="tsd-comment tsd-typography"><p>The enforced type</p>
+</div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/AgustinSRG/tsbean-orm/blob/bf7738e/src/common.ts#L173">common.ts:173</a></li></ul></aside></li>
+<li class="tsd-signature tsd-anchor-link" id="enforceType-3">enforce<wbr/>Type<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span>, type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">&quot;bigint&quot;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">bigint</span><a href="#enforceType-3" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Enforces a type when receiving data from data source</p>
+
+<h3>Returns</h3><p>The parsed value</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5>value: <span class="tsd-signature-type">unknown</span></h5>
+<div class="tsd-comment tsd-typography"><p>The value received from the data source</p>
+</div></li>
+<li>
+<h5>type: <span class="tsd-signature-type">&quot;bigint&quot;</span></h5>
+<div class="tsd-comment tsd-typography"><p>The enforced type</p>
+</div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">bigint</span></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/AgustinSRG/tsbean-orm/blob/bf7738e/src/common.ts#L181">common.ts:181</a></li></ul></aside></li>
+<li class="tsd-signature tsd-anchor-link" id="enforceType-4">enforce<wbr/>Type<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span>, type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">&quot;date&quot;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Date</span><a href="#enforceType-4" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Enforces a type when receiving data from data source</p>
+
+<h3>Returns</h3><p>The parsed value</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5>value: <span class="tsd-signature-type">unknown</span></h5>
+<div class="tsd-comment tsd-typography"><p>The value received from the data source</p>
+</div></li>
+<li>
+<h5>type: <span class="tsd-signature-type">&quot;date&quot;</span></h5>
+<div class="tsd-comment tsd-typography"><p>The enforced type</p>
+</div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Date</span></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/AgustinSRG/tsbean-orm/blob/bf7738e/src/common.ts#L189">common.ts:189</a></li></ul></aside></li>
+<li class="tsd-signature tsd-anchor-link" id="enforceType-5">enforce<wbr/>Type<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span>, type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">&quot;object&quot;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><a href="#enforceType-5" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Enforces a type when receiving data from data source</p>
+
+<h3>Returns</h3><p>The parsed value</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5>value: <span class="tsd-signature-type">unknown</span></h5>
+<div class="tsd-comment tsd-typography"><p>The value received from the data source</p>
+</div></li>
+<li>
+<h5>type: <span class="tsd-signature-type">&quot;object&quot;</span></h5>
+<div class="tsd-comment tsd-typography"><p>The enforced type</p>
 </div></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/AgustinSRG/tsbean-orm/blob/1c162dc/src/dao.ts#L15">dao.ts:15</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/AgustinSRG/tsbean-orm/blob/bf7738e/src/common.ts#L197">common.ts:197</a></li></ul></aside></li>
+<li class="tsd-signature tsd-anchor-link" id="enforceType-6">enforce<wbr/>Type<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span>, type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">&quot;array&quot;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><a href="#enforceType-6" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Enforces a type when receiving data from data source</p>
+
+<h3>Returns</h3><p>The parsed value</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5>value: <span class="tsd-signature-type">unknown</span></h5>
+<div class="tsd-comment tsd-typography"><p>The value received from the data source</p>
+</div></li>
+<li>
+<h5>type: <span class="tsd-signature-type">&quot;array&quot;</span></h5>
+<div class="tsd-comment tsd-typography"><p>The enforced type</p>
+</div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/AgustinSRG/tsbean-orm/blob/bf7738e/src/common.ts#L205">common.ts:205</a></li></ul></aside></li></ul></section></div>
 <div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 <div class="tsd-navigation settings">
 <details class="tsd-index-accordion"><summary class="tsd-accordion-summary">
@@ -69,8 +189,18 @@
 <li class="tsd-kind-class"><a href="../classes/OrderBy.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>Order<wbr/>By</a></li>
 <li class="tsd-kind-class"><a href="../classes/SelectOptions.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>Select<wbr/>Options</a></li>
 <li class="tsd-kind-interface"><a href="../interfaces/DataSourceDriver.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-interface)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-256-path"></rect><path d="M9.51 16V15.016H11.298V8.224H9.51V7.24H14.19V8.224H12.402V15.016H14.19V16H9.51Z" fill="var(--color-text)" id="icon-256-text"></path></svg>Data<wbr/>Source<wbr/>Driver</a></li>
+<li class="tsd-kind-interface"><a href="../interfaces/FilterAndOperation.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Filter<wbr/>And<wbr/>Operation</a></li>
+<li class="tsd-kind-interface"><a href="../interfaces/FilterCompareOperation.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Filter<wbr/>Compare<wbr/>Operation</a></li>
+<li class="tsd-kind-interface"><a href="../interfaces/FilterExistsOperation.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Filter<wbr/>Exists<wbr/>Operation</a></li>
+<li class="tsd-kind-interface"><a href="../interfaces/FilterIntoOperation.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Filter<wbr/>Into<wbr/>Operation</a></li>
+<li class="tsd-kind-interface"><a href="../interfaces/FilterNotOperation.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Filter<wbr/>Not<wbr/>Operation</a></li>
+<li class="tsd-kind-interface"><a href="../interfaces/FilterOrOperation.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Filter<wbr/>Or<wbr/>Operation</a></li>
+<li class="tsd-kind-interface"><a href="../interfaces/FilterRegexOperation.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Filter<wbr/>Regex<wbr/>Operation</a></li>
 <li class="tsd-kind-interface"><a href="../interfaces/ObjectSerializeOptions.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Object<wbr/>Serialize<wbr/>Options</a></li>
-<li class="tsd-kind-type-alias"><a href="../types/GenericFilter.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-4194304-path"></rect><path d="M11.31 16V8.224H8.91V7.24H14.79V8.224H12.39V16H11.31Z" fill="var(--color-text)" id="icon-4194304-text"></path></svg>Generic<wbr/>Filter</a></li>
+<li class="tsd-kind-interface"><a href="../interfaces/RowUpdateIncrement.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Row<wbr/>Update<wbr/>Increment</a></li>
+<li class="tsd-kind-interface"><a href="../interfaces/RowUpdateSet.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-256-path"></use><use href="#icon-256-text"></use></svg>Row<wbr/>Update<wbr/>Set</a></li>
+<li class="tsd-kind-type-alias"><a href="../types/FilterOperation.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-4194304-path"></rect><path d="M11.31 16V8.224H8.91V7.24H14.79V8.224H12.39V16H11.31Z" fill="var(--color-text)" id="icon-4194304-text"></path></svg>Filter<wbr/>Operation</a></li>
+<li class="tsd-kind-type-alias"><a href="../types/GenericFilter.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4194304-path"></use><use href="#icon-4194304-text"></use></svg>Generic<wbr/>Filter</a></li>
 <li class="tsd-kind-type-alias"><a href="../types/GenericKeyValue.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4194304-path"></use><use href="#icon-4194304-text"></use></svg>Generic<wbr/>Key<wbr/>Value</a></li>
 <li class="tsd-kind-type-alias"><a href="../types/GenericRow.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4194304-path"></use><use href="#icon-4194304-text"></use></svg>Generic<wbr/>Row</a></li>
 <li class="tsd-kind-type-alias"><a href="../types/GenericRowUpdate.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4194304-path"></use><use href="#icon-4194304-text"></use></svg>Generic<wbr/>Row<wbr/>Update</a></li>
