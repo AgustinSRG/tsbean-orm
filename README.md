@@ -49,7 +49,7 @@ DataSource.set(DataSource.DEFAULT, mySource);
 
 The recommended architecture when using this project is to create a `models` folder with a class file for each entity of your relational data model.
 
-Check out this tool to automatically generate the model classes: [https://agustinsrg.github.io/tsbean-codegen/](https://agustinsrg.github.io/tsbean-codegen/);
+Check out this tool to automatically generate the model classes: [https://agustinsrg.github.io/tsbean-codegen/](https://agustinsrg.github.io/tsbean-codegen/)
 
 The data models must extend `DataModel`
 
@@ -63,21 +63,21 @@ export class MyModel extends DataModel {
 
 Data models must have a constructor receiving the data from the data source. The constructor must:
 
- - Call DataModel class `super` construtor, wih the name of the data source, the table and the primary key.
+ - Call DataModel class `super` constructor, wih the name of the data source, the table and the primary key.
  - Set the properties of the model from the data.
  - Call `this.init()` for the orm to start checking for changes.
 
 Example:
 
 ```ts
-import { DataModel, GenericRow, DataSource, enforceType } from "tsbean-orm";
+import { DataModel, TypedRow, DataSource, enforceType } from "tsbean-orm";
 
 export class Person extends DataModel {
 
     public name: string;
     public age: number;
 
-    constructor(data: GenericRow) {
+    constructor(data: TypedRow<Person>) {
         // First, we call DataModel constructor 
         super(
             DataSource.DEFAULT, // The data source
@@ -103,18 +103,18 @@ export class Person extends DataModel {
 
 Finders are used to execute queries over multiple documents, based on a data model.
 
-To create one, you have to specify the  name of the data source, the table, the primary key (if any) and a callback to instanciate your custom data model.
+To create one, you have to specify the  name of the data source, the table, the primary key (if any) and a callback to instantiate your custom data model.
 
 ```ts
-import { DataModel, GenericRow, DataSource, DataFinder, enforceType } from "tsbean-orm";
+import { DataModel, TypedRow, DataSource, DataFinder, enforceType } from "tsbean-orm";
 
 export class Person extends DataModel {
 
-    public static finder = new DataFinder<Person>(
+    public static finder = new DataFinder<Person, string>(
             DataSource.DEFAULT, // The data source
             "persons", // The table or collection name
             "name" // The primary key. Leave blank if no primary key
-            (data: GenericRow) => {
+            (data: TypedRow<Person>) => {
                 return new Person(data);
             },
     );
@@ -122,7 +122,7 @@ export class Person extends DataModel {
     public name: string;
     public age: number;
 
-    constructor(data: GenericRow) {
+    constructor(data: TypedRow<Person>) {
         // First, we call DataModel constructor 
         super(
             DataSource.DEFAULT, // The data source
@@ -146,7 +146,7 @@ export class Person extends DataModel {
 
 Main finder classes:
 
- - DataFinder: The finder for a data model
+ - DataFinder: The finder for a data model. It's a generic with 2 parameters: The data model class and the primary key type (optional).
  - DataFilter: Allows setting filters for the data
  - OrderBy: Sets the order of the received data
  - SelectOptions: Sets options like the max number of rows or the projection.
@@ -156,7 +156,7 @@ You can use the finder to find instances of your data model, or apply updates or
 Here are some examples using the `Person` model:
 
 ```ts
-import { DataModel, GenericRow, DataSource, DataFinder, DataFilter, OrderBy, SelectOptions } from "tsbean-orm";
+import { DataModel, TypedRow, DataSource, DataFinder, DataFilter, OrderBy, SelectOptions } from "tsbean-orm";
 
 async function main() {
     // Find person with name "person1"
@@ -188,7 +188,7 @@ async function main() {
 In order to insert a new instance of you data model into the data source, you have to create it using the `new` keyword and then call the `insert` method:
 
 ```ts
-import { DataModel, GenericRow, DataSource, DataFinder, DataFilter, OrderBy, SelectOptions } from "tsbean-orm";
+import { DataModel, TypedRow, DataSource, DataFinder, DataFilter, OrderBy, SelectOptions } from "tsbean-orm";
 
 async function main() {
     const person = new Person({
@@ -209,7 +209,7 @@ async function main() {
 Once you find a model using a finder object, you can update its properties and then save it, to apply the changes to the data source. In order to do that, use the `save`  method.
 
 ```ts
-import { DataModel, GenericRow, DataSource, DataFinder, DataFilter, OrderBy, SelectOptions } from "tsbean-orm";
+import { DataModel, TypedRow, DataSource, DataFinder, DataFilter, OrderBy, SelectOptions } from "tsbean-orm";
 
 async function main() {
     const person = await Person.finder.findByKey("example");
@@ -226,7 +226,7 @@ async function main() {
 Once you find a model using a finder object, you can also delete it, using the `delete` method.
 
 ```ts
-import { DataModel, GenericRow, DataSource, DataFinder, DataFilter, OrderBy, SelectOptions } from "tsbean-orm";
+import { DataModel, TypedRow, DataSource, DataFinder, DataFilter, OrderBy, SelectOptions } from "tsbean-orm";
 
 async function main() {
     const person = await Person.finder.findByKey("example");
@@ -242,10 +242,10 @@ async function main() {
 Since the DataModel objects are circular structures, you cannot simply serialize them with `JSON.stringify`. Instead, DataModel class offers 2 method to serialize it:
 
  - toObject: Turns the DataModel instance into a plain key-values object.
- - ToJSON: Turns the DataModel instance intoa JSON string
+ - ToJSON: Turns the DataModel instance into a JSON string
 
 ```ts
-import { DataModel, GenericRow, DataSource, DataFinder, DataFilter, OrderBy, SelectOptions } from "tsbean-orm";
+import { DataModel, TypedRow, DataSource, DataFinder, DataFilter, OrderBy, SelectOptions } from "tsbean-orm";
 
 async function main() {
     const person = await Person.finder.findByKey("example");

@@ -3,16 +3,16 @@
 
 "use strict";
 
-import { DataSource, DataSourceDriver, GenericFilter, GenericKeyValue, GenericRow, SortDirection } from "./data-source";
+import { DataSource, DataSourceDriver, GenericFilter, GenericKeyValue, GenericRow, GenericRowUpdate, SortDirection } from "./data-source";
 import { DataFilter } from "./filtering";
 
 /**
  * Enforces a type when receiving data from data source
  * @param value The value received from the data source
- * @param type The enforzed type ("string" | "number" | "boolean" | "int" | "bigint" | "date" | "object" | "array")
+ * @param type The enforced type ("string" | "number" | "boolean" | "int" | "bigint" | "date" | "object" | "array")
  * @returns The parsed value
  */
-export function enforceType(value: any, type: "string" | "number" | "boolean" | "int" | "bigint" | "date" | "object" | "array"): any {
+export function enforceType(value: unknown, type: "string" | "number" | "boolean" | "int" | "bigint" | "date" | "object" | "array"): any {
     if (value === undefined || value === null) {
         return null;
     }
@@ -24,11 +24,17 @@ export function enforceType(value: any, type: "string" | "number" | "boolean" | 
     case "boolean":
         return !!value;
     case "int":
-        return parseInt(value, 10);
+        return Math.floor(Number(value));
     case "bigint":
-        return BigInt(value);
+        return BigInt(value + "");
     case "date":
-        return new Date(value);
+        if (value instanceof Date) {
+            return value;
+        } else if (typeof value === "string" || typeof value === "number") {
+            return new Date(value);
+        } else {
+            return null;
+        }
     case "object":
         if (typeof value === "object") {
             return value;
@@ -345,7 +351,7 @@ export class DataAccessObject {
      * @param filter Filter to apply
      * @param updated Updated row
      */
-    public static async updateMany(source: string, table: string, filter: GenericFilter, updated: GenericRow): Promise<number> {
+    public static async updateMany(source: string, table: string, filter: GenericFilter, updated: GenericRowUpdate): Promise<number> {
         return DataAccessObject.getDriver(source).updateMany(table, filter, updated);
     }
 

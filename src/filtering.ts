@@ -5,19 +5,19 @@
 
 import { DataModel } from "./bean";
 import { DataAccessObject } from "./dao";
-import { GenericFilter, GenericKeyValue, GenericRow, SortDirection } from "./data-source";
+import { GenericFilter, GenericKeyValue, GenericRow, GenericValue, ModelKeyName, SortDirection, StrictRowUpdate, TypedRow } from "./data-source";
 import { escapeRegExp } from "./util";
 
 /**
  * Data filter generator
  */
-export class DataFilter {
+export class DataFilter<T extends DataModel = any> {
 
     /**
      * Require all conditions to match
      * @param args conditions
      */
-    public static and(...args: DataFilter[]): DataFilter {
+    public static and<T extends DataModel = any>(...args: DataFilter<T>[]): DataFilter<T> {
         const res: GenericFilter = {
             operation: "and",
             children: [],
@@ -34,7 +34,7 @@ export class DataFilter {
      * Require one of the conditions to match
      * @param args conditions
      */
-    public static or(...args: DataFilter[]): DataFilter {
+    public static or<T extends DataModel = any>(...args: DataFilter<T>[]): DataFilter<T> {
         const res: GenericFilter = {
             operation: "or",
             children: [],
@@ -51,7 +51,7 @@ export class DataFilter {
      * Negates the condition
      * @param arg condition
      */
-    public static not(arg: DataFilter): DataFilter {
+    public static not<T extends DataModel = any>(arg: DataFilter<T>): DataFilter<T> {
         return new DataFilter({ operation: "not", child: arg.query });
     }
 
@@ -60,7 +60,7 @@ export class DataFilter {
      * @param key The key
      * @param value The value
      */
-    public static equals(key: string, value: GenericKeyValue): DataFilter {
+    public static equals<T extends DataModel = any>(key: ModelKeyName<T>, value: GenericKeyValue): DataFilter<T> {
         return new DataFilter({ operation: "eq", key: key, value: value });
     }
 
@@ -70,7 +70,7 @@ export class DataFilter {
      * @param key The key
      * @param value The value
      */
-    public static notEquals(key: string, value: GenericKeyValue): DataFilter {
+    public static notEquals<T extends DataModel = any>(key: ModelKeyName<T>, value: GenericKeyValue): DataFilter<T> {
         return new DataFilter({ operation: "ne", key: key, value: value });
     }
 
@@ -79,7 +79,7 @@ export class DataFilter {
      * @param key The key
      * @param value The value
      */
-    public static greaterThan(key: string, value: GenericKeyValue): DataFilter {
+    public static greaterThan<T extends DataModel = any>(key: ModelKeyName<T>, value: GenericKeyValue): DataFilter<T> {
         return new DataFilter({ operation: "gt", key: key, value: value });
     }
 
@@ -88,7 +88,7 @@ export class DataFilter {
      * @param key The key
      * @param value The value
      */
-    public static greaterOrEquals(key: string, value: GenericKeyValue): DataFilter {
+    public static greaterOrEquals<T extends DataModel = any>(key: ModelKeyName<T>, value: GenericKeyValue): DataFilter<T> {
         return new DataFilter({ operation: "gte", key: key, value: value });
     }
 
@@ -97,7 +97,7 @@ export class DataFilter {
      * @param key The key
      * @param value The value
      */
-    public static lessThan(key: string, value: GenericKeyValue): DataFilter {
+    public static lessThan<T extends DataModel = any>(key: ModelKeyName<T>, value: GenericKeyValue): DataFilter<T> {
         return new DataFilter({ operation: "lt", key: key, value: value });
     }
 
@@ -106,7 +106,7 @@ export class DataFilter {
      * @param key The key
      * @param value The value
      */
-    public static lessOrEquals(key: string, value: GenericKeyValue): DataFilter {
+    public static lessOrEquals<T extends DataModel = any>(key: ModelKeyName<T>, value: GenericKeyValue): DataFilter<T> {
         return new DataFilter({ operation: "lte", key: key, value: value });
     }
 
@@ -115,7 +115,7 @@ export class DataFilter {
      * @param key The key
      * @param values The values
      */
-    public static into(key: string, values: GenericKeyValue[]): DataFilter {
+    public static into<T extends DataModel = any>(key: ModelKeyName<T>, values: GenericKeyValue[]): DataFilter<T> {
         return new DataFilter({ operation: "in", key: key, values: values });
     }
 
@@ -124,7 +124,7 @@ export class DataFilter {
      * @param key The key
      * @param value The value
      */
-    public static isNull(key: string): DataFilter {
+    public static isNull<T extends DataModel = any>(key: ModelKeyName<T>): DataFilter<T> {
         return new DataFilter({ operation: "exists", key: key, exists: false });
     }
 
@@ -133,7 +133,7 @@ export class DataFilter {
      * @param key The key
      * @param value The value
      */
-    public static isNotNull(key: string): DataFilter {
+    public static isNotNull<T extends DataModel = any>(key: ModelKeyName<T>): DataFilter<T> {
         return new DataFilter({ operation: "exists", key: key, exists: true });
     }
 
@@ -143,7 +143,7 @@ export class DataFilter {
      * @param value The value
      * @param ignoreCase true to ignore case
      */
-    public static startsWith(key: string, value: string, ignoreCase?: boolean): DataFilter {
+    public static startsWith<T extends DataModel = any>(key: ModelKeyName<T>, value: string, ignoreCase?: boolean): DataFilter<T> {
         let regex: RegExp;
 
         if (ignoreCase) {
@@ -161,7 +161,7 @@ export class DataFilter {
      * @param value The value
      * @param ignoreCase true to ignore case
      */
-    public static endsWith(key: string, value: string, ignoreCase?: boolean): DataFilter {
+    public static endsWith<T extends DataModel = any>(key: ModelKeyName<T>, value: string, ignoreCase?: boolean): DataFilter<T> {
         let regex: RegExp;
 
         if (ignoreCase) {
@@ -179,7 +179,7 @@ export class DataFilter {
      * @param value The value
      * @param ignoreCase true to ignore case
      */
-    public static contains(key: string, value: string, ignoreCase?: boolean): DataFilter {
+    public static contains<T extends DataModel = any>(key: ModelKeyName<T>, value: string, ignoreCase?: boolean): DataFilter<T> {
         let regex: RegExp;
 
         if (ignoreCase) {
@@ -206,9 +206,9 @@ export class DataFilter {
         return new DataFilter(query);
     }
 
-    public query: GenericFilter;
+    public query: GenericFilter<ModelKeyName<T>>;
 
-    constructor(query: GenericFilter) {
+    constructor(query: GenericFilter<ModelKeyName<T>>) {
         this.query = query || null;
     }
 }
@@ -216,13 +216,13 @@ export class DataFilter {
 /**
  * Order By
  */
-export class OrderBy {
+export class OrderBy<T extends DataModel = any> {
 
     /**
      * Ascendant ordering
      * @param by Field to order by
      */
-    public static asc(by: string): OrderBy {
+    public static asc<T extends DataModel = any>(by: ModelKeyName<T>): OrderBy<T> {
         return new OrderBy(by, "asc");
     }
 
@@ -230,7 +230,7 @@ export class OrderBy {
      * Descendant ordering
      * @param by Field to order by
      */
-    public static desc(by: string): OrderBy {
+    public static desc<T extends DataModel = any>(by: ModelKeyName<T>): OrderBy<T> {
         return new OrderBy(by, "desc");
     }
 
@@ -241,10 +241,10 @@ export class OrderBy {
         return new OrderBy("", null);
     }
 
-    public by: string;
+    public by: ModelKeyName<T> | "";
     public dir: SortDirection;
 
-    constructor(by: string, dir: SortDirection) {
+    constructor(by: ModelKeyName<T> | "", dir: SortDirection) {
         this.by = by;
         this.dir = dir;
     }
@@ -253,23 +253,23 @@ export class OrderBy {
 /**
  * Options for SELECT
  */
-export class SelectOptions {
+export class SelectOptions<T extends DataModel = any> {
 
     /**
      * @returns Configurable options 
      */
-    public static configure(): SelectOptions {
+    public static configure<T extends DataModel = any>(): SelectOptions<T> {
         return new SelectOptions();
     }
 
     /**
-     * @returns Default uptions 
+     * @returns Default options 
      */
-    public static default(): SelectOptions {
+    public static default<T extends DataModel = any>(): SelectOptions<T> {
         return new SelectOptions();
     }
 
-    public projection: Set<string>;
+    public projection: Set<ModelKeyName<T>>;
     public skip: number;
     public limit: number;
 
@@ -283,7 +283,7 @@ export class SelectOptions {
      * Set first row (SKIP)
      * @param skip The first row (first index 0)
      */
-    public setFirstRow(skip: number): SelectOptions {
+    public setFirstRow(skip: number): this {
         this.skip = skip;
         return this;
     }
@@ -292,7 +292,7 @@ export class SelectOptions {
      * Set the max number of rows to fetch
      * @param limit The rows limit
      */
-    public setMaxRows(limit: number): SelectOptions {
+    public setMaxRows(limit: number): this {
         this.limit = limit;
         return this;
     }
@@ -301,29 +301,60 @@ export class SelectOptions {
      * Select only a few fields (SELECT a,b,...)
      * @param cols The cols to select
      */
-    public fetchOnly(cols: string[]): SelectOptions {
-        this.projection = new Set<string>(cols);
+    public fetchOnly(cols: ModelKeyName<T>[]): this {
+        this.projection = new Set(cols);
         return this;
+    }
+}
+
+/**
+ * Strict data update
+ * Pass to DataFinder.update
+ */
+export class DataUpdate {
+
+    /**
+     * Set value
+     * @param value Value to set
+     */
+    public static set(value: GenericValue): DataUpdate {
+        return new DataUpdate("set", value);
+    }
+
+    /**
+     * Increment value
+     * @param inc Increment to apply
+     */
+    public static increment(inc: number): DataUpdate {
+        return new DataUpdate("inc", inc);
+    }
+
+    public update: "set" | "inc";
+    public value: GenericValue;
+
+    constructor(update: "set" | "inc", value: GenericValue) {
+        this.update = update;
+        this.value = value;
     }
 }
 
 /**
  * Data finder
  */
-export class DataFinder<T extends DataModel> {
+export class DataFinder<T extends DataModel, PK_Type = GenericKeyValue> {
     private source: string;
     private table: string;
-    private key: string;
-    private dataParse: (data: any) => T;
+    private key: ModelKeyName<T>;
+    private dataParse: (data: TypedRow<T>) => T;
 
     /**
      * Constructor
      * @param source Name of the source 
      * @param table Name of the table
-     * @param key Name of the primery key
+     * @param key Name of the primary key
      * @param dataParse Function to create DatModel from GenericRow
      */
-    constructor(source: string, table: string, key: string, dataParse: (data: GenericRow) => T) {
+    constructor(source: string, table: string, key: ModelKeyName<T>, dataParse: (data: TypedRow<T>) => T) {
         this.source = source;
         this.table = table;
         this.key = key;
@@ -334,7 +365,7 @@ export class DataFinder<T extends DataModel> {
      * Find instance by key
      * @param keyValue The value of the primary key
      */
-    public async findByKey(keyValue: GenericKeyValue): Promise<T> {
+    public async findByKey(keyValue: PK_Type): Promise<T> {
         const data = await DataAccessObject.findByKey(this.source, this.table, this.key, keyValue);
         if (data) {
             return this.dataParse(data);
@@ -349,7 +380,7 @@ export class DataFinder<T extends DataModel> {
      * @param orderBy Order of the results
      * @param options Additional options
      */
-    public async find(where: DataFilter, orderBy?: OrderBy, options?: SelectOptions): Promise<T[]> {
+    public async find(where: DataFilter<T>, orderBy?: OrderBy<T>, options?: SelectOptions<T>): Promise<T[]> {
         const opts = options || (new SelectOptions());
         orderBy = orderBy || OrderBy.nothing();
         const data = await DataAccessObject.find(this.source, this.table, where.query, orderBy.by, orderBy.dir, opts.skip, opts.limit, opts.projection);
@@ -371,7 +402,7 @@ export class DataFinder<T extends DataModel> {
      * @param options Additional options
      * @param each Callback for each row
      */
-    public async findStream(where: DataFilter, orderBy: OrderBy, options: SelectOptions, each: (row: T) => Promise<void>): Promise<void> {
+    public async findStream(where: DataFilter<T>, orderBy: OrderBy<T>, options: SelectOptions<T>, each: (row: T) => Promise<void>): Promise<void> {
         await DataAccessObject.findStream(this.source, this.table, where.query, orderBy.by, orderBy.dir, options.skip, options.limit, options.projection, async function (doc) {
             await each(this.dataParse(doc))
         }.bind(this));
@@ -384,7 +415,7 @@ export class DataFinder<T extends DataModel> {
      * @param options Additional options
      * @param each Callback for each row
      */
-    public async findStreamSync(where: DataFilter, orderBy: OrderBy, options: SelectOptions, each: (row: T) => void): Promise<void> {
+    public async findStreamSync(where: DataFilter<T>, orderBy: OrderBy<T>, options: SelectOptions<T>, each: (row: T) => void): Promise<void> {
         await DataAccessObject.findStreamSync(this.source, this.table, where.query, orderBy.by, orderBy.dir, options.skip, options.limit, options.projection, function (doc) {
             each(this.dataParse(doc))
         }.bind(this));
@@ -394,7 +425,7 @@ export class DataFinder<T extends DataModel> {
      * Counts instances
      * @param where Conditions for the instances to match
      */
-    public async count(where: DataFilter): Promise<number> {
+    public async count(where: DataFilter<T>): Promise<number> {
         return DataAccessObject.count(this.source, this.table, where.query);
     }
 
@@ -403,7 +434,7 @@ export class DataFinder<T extends DataModel> {
      * @param field Field to compute summatory
      * @param where Conditions for the instances to match
      */
-    public async sum(field: string, where: DataFilter): Promise<number> {
+    public async sum(field: ModelKeyName<T>, where: DataFilter<T>): Promise<number> {
         return DataAccessObject.sum(this.source, this.table, where.query, this.key, field);
     }
 
@@ -411,7 +442,7 @@ export class DataFinder<T extends DataModel> {
      * Delete instances
      * @param where Conditions for the instances to match
      */
-    public async delete(where: DataFilter): Promise<number> {
+    public async delete(where: DataFilter<T>): Promise<number> {
         return DataAccessObject.deleteMany(this.source, this.table, where.query);
     }
 
@@ -420,7 +451,7 @@ export class DataFinder<T extends DataModel> {
      * @param set Changes to make
      * @param where Conditions for the instances to match
      */
-    public async update(set: { [key: string]: any }, where: DataFilter): Promise<number> {
+    public async update(set: StrictRowUpdate<T>, where: DataFilter<T>): Promise<number> {
         return DataAccessObject.updateMany(this.source, this.table, where.query, set);
     }
 }
