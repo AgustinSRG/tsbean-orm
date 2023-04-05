@@ -178,7 +178,7 @@ export class TestDriver implements DataSourceDriver {
      * @param sortDir "asc" or "desc". Leave as null for default sorting
      * @param skip Number of rows to skip. Leave as -1 for no skip
      * @param limit Limit of results. Leave as -1 for no limit
-     * @param projection List of fields to featch from the table. Leave as null to fetch them all.
+     * @param projection List of fields to fetch from the table. Leave as null to fetch them all.
      * @param each Function to parse each row
      */
     public async findStream(table: string, filter: GenericFilter, sortBy: string, sortDir: SortDirection, skip: number, limit: number, projection: Set<string>, each: (row: GenericRow) => Promise<void>): Promise<void> {
@@ -244,7 +244,7 @@ export class TestDriver implements DataSourceDriver {
      * @param sortDir "asc" or "desc". Leave as null for default sorting
      * @param skip Number of rows to skip. Leave as -1 for no skip
      * @param limit Limit of results. Leave as -1 for no limit
-     * @param projection List of fields to featch from the table. Leave as null to fetch them all.
+     * @param projection List of fields to fetch from the table. Leave as null to fetch them all.
      * @param each Function to parse each row
      */
     public async findStreamSync(table: string, filter: GenericFilter, sortBy: string, sortDir: SortDirection, skip: number, limit: number, projection: Set<string>, each: (row: any) => void): Promise<void> {
@@ -423,7 +423,7 @@ export class TestDriver implements DataSourceDriver {
     }
 
     /**
-     * Summatory of many rows
+     * Summation of many rows
      * @param table Table or collection name
      * @param filter Filter to apply
      * @param id Name of the primary key
@@ -445,7 +445,7 @@ export class TestDriver implements DataSourceDriver {
      * Atomic increment
      * @param table Table or collection name
      * @param keyName The name of the key
-     * @param keyValue The value ofthe key
+     * @param keyValue The value of the key
      * @param prop The field to increment
      * @param inc The amount to increment
      */

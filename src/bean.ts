@@ -4,8 +4,8 @@
 "use strict";
 
 import { DataAccessObject, makeCopyOfObject } from "./dao";
-import { GenericRow, ModelKeyName } from "./data-source";
-import { DataFilter } from "./filtering";
+import { GenericRow, ModelKeyName } from "./common";
+import { DataFilter } from "./finder";
 
 /**
  * Options to serialize a data model

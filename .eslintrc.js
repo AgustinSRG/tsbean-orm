@@ -11,6 +11,7 @@ module.exports = {
     ],
     "rules": {
         "@typescript-eslint/explicit-module-boundary-types": 0,
+        "@typescript-eslint/ban-types": 0,
         "no-console": 0,
         "no-async-promise-executor": 0,
         "only-arrow-functions": 0,
