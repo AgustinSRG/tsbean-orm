@@ -3,7 +3,7 @@
 "use strict";
 
 import { expect } from 'chai';
-import { DataFilter, DataSource, OrderBy, SelectOptions } from '../src/index';
+import { DataFilter, DataSource, DataUpdate, OrderBy, SelectOptions } from '../src/index';
 import { Person } from './models/person';
 import { Dummy } from './models/dummy';
 import { TestDriver } from './driver/test-driver';
@@ -382,11 +382,12 @@ describe("tsbean-orm testing", () => {
         rows = rows.map(row => {
             if (row.age > 50) {
                 row.hasDriverLicense = false;
+                row.age++;
             }
             return row;
         });
 
-        await Person.finder.update({hasDriverLicense: false}, DataFilter.greaterThan("age", 50));
+        await Person.finder.update({ hasDriverLicense: DataUpdate.set(false), age: DataUpdate.increment(1) }, DataFilter.greaterThan("age", 50));
 
         const results = await Person.finder.find(DataFilter.any(), OrderBy.asc("id"));
 

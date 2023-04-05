@@ -325,7 +325,7 @@ export class DataUpdate {
      * Increment value
      * @param inc Increment to apply
      */
-    public static desc(inc: number): DataUpdate {
+    public static increment(inc: number): DataUpdate {
         return new DataUpdate("inc", inc);
     }
 

@@ -1,23 +1,16 @@
-// Example for testing: Person
+// Person - tsbean-orm class (auto generated)
 
 "use strict";
 
-import { DataModel, GenericRow, DataSource, DataFinder, enforceType } from "../../src/index";
+import { DataModel, enforceType, TypedRow, DataSource, DataFinder, DataFilter, OrderBy, SelectOptions, DataUpdate } from "../../src/index";
 
-const SOURCE = DataSource.DEFAULT;
+const DATA_SOURCE = DataSource.DEFAULT;
 const TABLE = "person";
 const PRIMARY_KEY = "id";
 
 export class Person extends DataModel {
 
-    public static finder = new DataFinder<Person>(
-        SOURCE, // The data source
-        TABLE, // The table or collection name
-        PRIMARY_KEY, // The primary key. Leave blank if no primary key
-        (data: GenericRow) => {
-            return new Person(data);
-        },
-    );
+    public static finder = new DataFinder<Person>(DATA_SOURCE, TABLE, PRIMARY_KEY, (data: TypedRow<Person>) => { return new Person(data) });
 
     public id: number;
     public name: string;
@@ -27,13 +20,9 @@ export class Person extends DataModel {
     public preferences: string[];
     public birthDate: Date;
 
-    constructor(data: GenericRow) {
+    constructor(data: TypedRow<Person>) {
         // First, we call DataModel constructor 
-        super(
-            SOURCE, // The data source
-            TABLE, // The table or collection name
-            PRIMARY_KEY // The primary key. Leave blank if no primary key
-        );
+        super(DATA_SOURCE, TABLE, PRIMARY_KEY);
 
         // Second, we set the class properties
         // The recommended way is to set one by one to prevent prototype pollution
