@@ -10,7 +10,7 @@ import { DataFilter } from "./finder";
 /**
  * Options to serialize a data model
  */
-export interface ObjectSerializeOptions<T extends DataModel> {
+export interface ObjectSerializeOptions<T> {
     /**
      * Whitelist. Set the list of fields you want to serialize.
      */
@@ -32,7 +32,7 @@ export class DataModel {
      * Constructor
      * @param source Name of the data source 
      * @param table Name of the table
-     * @param primaryKey Name of the primery key
+     * @param primaryKey Name of the primary key
      */
     constructor(source: string, table: string, primaryKey: string) {
         this.dao = new DataAccessObject(source, table, primaryKey, {});

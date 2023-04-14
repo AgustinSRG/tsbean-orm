@@ -11,13 +11,13 @@ import { escapeRegExp } from "./util";
 /**
  * Data filter generator
  */
-export class DataFilter<T extends DataModel = any> {
+export class DataFilter<T = any> {
 
     /**
      * Require all conditions to match
      * @param args conditions
      */
-    public static and<T extends DataModel = any>(...args: DataFilter<T>[]): DataFilter<T> {
+    public static and<T = any>(...args: DataFilter<T>[]): DataFilter<T> {
         const res: GenericFilter = {
             operation: "and",
             children: [],
@@ -34,7 +34,7 @@ export class DataFilter<T extends DataModel = any> {
      * Require one of the conditions to match
      * @param args conditions
      */
-    public static or<T extends DataModel = any>(...args: DataFilter<T>[]): DataFilter<T> {
+    public static or<T = any>(...args: DataFilter<T>[]): DataFilter<T> {
         const res: GenericFilter = {
             operation: "or",
             children: [],
@@ -51,7 +51,7 @@ export class DataFilter<T extends DataModel = any> {
      * Negates the condition
      * @param arg condition
      */
-    public static not<T extends DataModel = any>(arg: DataFilter<T>): DataFilter<T> {
+    public static not<T = any>(arg: DataFilter<T>): DataFilter<T> {
         return new DataFilter({ operation: "not", child: arg.query });
     }
 
@@ -60,7 +60,7 @@ export class DataFilter<T extends DataModel = any> {
      * @param key The key
      * @param value The value
      */
-    public static equals<T extends DataModel = any>(key: ModelKeyName<T>, value: GenericKeyValue): DataFilter<T> {
+    public static equals<T = any>(key: ModelKeyName<T>, value: GenericKeyValue): DataFilter<T> {
         return new DataFilter({ operation: "eq", key: key, value: value });
     }
 
@@ -70,7 +70,7 @@ export class DataFilter<T extends DataModel = any> {
      * @param key The key
      * @param value The value
      */
-    public static notEquals<T extends DataModel = any>(key: ModelKeyName<T>, value: GenericKeyValue): DataFilter<T> {
+    public static notEquals<T = any>(key: ModelKeyName<T>, value: GenericKeyValue): DataFilter<T> {
         return new DataFilter({ operation: "ne", key: key, value: value });
     }
 
@@ -79,7 +79,7 @@ export class DataFilter<T extends DataModel = any> {
      * @param key The key
      * @param value The value
      */
-    public static greaterThan<T extends DataModel = any>(key: ModelKeyName<T>, value: GenericKeyValue): DataFilter<T> {
+    public static greaterThan<T = any>(key: ModelKeyName<T>, value: GenericKeyValue): DataFilter<T> {
         return new DataFilter({ operation: "gt", key: key, value: value });
     }
 
@@ -88,7 +88,7 @@ export class DataFilter<T extends DataModel = any> {
      * @param key The key
      * @param value The value
      */
-    public static greaterOrEquals<T extends DataModel = any>(key: ModelKeyName<T>, value: GenericKeyValue): DataFilter<T> {
+    public static greaterOrEquals<T = any>(key: ModelKeyName<T>, value: GenericKeyValue): DataFilter<T> {
         return new DataFilter({ operation: "gte", key: key, value: value });
     }
 
@@ -97,7 +97,7 @@ export class DataFilter<T extends DataModel = any> {
      * @param key The key
      * @param value The value
      */
-    public static lessThan<T extends DataModel = any>(key: ModelKeyName<T>, value: GenericKeyValue): DataFilter<T> {
+    public static lessThan<T = any>(key: ModelKeyName<T>, value: GenericKeyValue): DataFilter<T> {
         return new DataFilter({ operation: "lt", key: key, value: value });
     }
 
@@ -106,7 +106,7 @@ export class DataFilter<T extends DataModel = any> {
      * @param key The key
      * @param value The value
      */
-    public static lessOrEquals<T extends DataModel = any>(key: ModelKeyName<T>, value: GenericKeyValue): DataFilter<T> {
+    public static lessOrEquals<T = any>(key: ModelKeyName<T>, value: GenericKeyValue): DataFilter<T> {
         return new DataFilter({ operation: "lte", key: key, value: value });
     }
 
@@ -115,7 +115,7 @@ export class DataFilter<T extends DataModel = any> {
      * @param key The key
      * @param values The values
      */
-    public static into<T extends DataModel = any>(key: ModelKeyName<T>, values: GenericKeyValue[]): DataFilter<T> {
+    public static into<T = any>(key: ModelKeyName<T>, values: GenericKeyValue[]): DataFilter<T> {
         return new DataFilter({ operation: "in", key: key, values: values });
     }
 
@@ -124,7 +124,7 @@ export class DataFilter<T extends DataModel = any> {
      * @param key The key
      * @param value The value
      */
-    public static isNull<T extends DataModel = any>(key: ModelKeyName<T>): DataFilter<T> {
+    public static isNull<T = any>(key: ModelKeyName<T>): DataFilter<T> {
         return new DataFilter({ operation: "exists", key: key, exists: false });
     }
 
@@ -133,7 +133,7 @@ export class DataFilter<T extends DataModel = any> {
      * @param key The key
      * @param value The value
      */
-    public static isNotNull<T extends DataModel = any>(key: ModelKeyName<T>): DataFilter<T> {
+    public static isNotNull<T = any>(key: ModelKeyName<T>): DataFilter<T> {
         return new DataFilter({ operation: "exists", key: key, exists: true });
     }
 
@@ -143,7 +143,7 @@ export class DataFilter<T extends DataModel = any> {
      * @param value The value
      * @param ignoreCase true to ignore case
      */
-    public static startsWith<T extends DataModel = any>(key: ModelKeyName<T>, value: string, ignoreCase?: boolean): DataFilter<T> {
+    public static startsWith<T = any>(key: ModelKeyName<T>, value: string, ignoreCase?: boolean): DataFilter<T> {
         let regex: RegExp;
 
         if (ignoreCase) {
@@ -161,7 +161,7 @@ export class DataFilter<T extends DataModel = any> {
      * @param value The value
      * @param ignoreCase true to ignore case
      */
-    public static endsWith<T extends DataModel = any>(key: ModelKeyName<T>, value: string, ignoreCase?: boolean): DataFilter<T> {
+    public static endsWith<T = any>(key: ModelKeyName<T>, value: string, ignoreCase?: boolean): DataFilter<T> {
         let regex: RegExp;
 
         if (ignoreCase) {
@@ -179,7 +179,7 @@ export class DataFilter<T extends DataModel = any> {
      * @param value The value
      * @param ignoreCase true to ignore case
      */
-    public static contains<T extends DataModel = any>(key: ModelKeyName<T>, value: string, ignoreCase?: boolean): DataFilter<T> {
+    public static contains<T = any>(key: ModelKeyName<T>, value: string, ignoreCase?: boolean): DataFilter<T> {
         let regex: RegExp;
 
         if (ignoreCase) {
@@ -216,13 +216,13 @@ export class DataFilter<T extends DataModel = any> {
 /**
  * Order By
  */
-export class OrderBy<T extends DataModel = any> {
+export class OrderBy<T = any> {
 
     /**
      * Ascendant ordering
      * @param by Field to order by
      */
-    public static asc<T extends DataModel = any>(by: ModelKeyName<T>): OrderBy<T> {
+    public static asc<T = any>(by: ModelKeyName<T>): OrderBy<T> {
         return new OrderBy(by, "asc");
     }
 
@@ -230,7 +230,7 @@ export class OrderBy<T extends DataModel = any> {
      * Descendant ordering
      * @param by Field to order by
      */
-    public static desc<T extends DataModel = any>(by: ModelKeyName<T>): OrderBy<T> {
+    public static desc<T = any>(by: ModelKeyName<T>): OrderBy<T> {
         return new OrderBy(by, "desc");
     }
 
@@ -253,19 +253,19 @@ export class OrderBy<T extends DataModel = any> {
 /**
  * Options for SELECT
  */
-export class SelectOptions<T extends DataModel = any> {
+export class SelectOptions<T = any> {
 
     /**
      * @returns Configurable options 
      */
-    public static configure<T extends DataModel = any>(): SelectOptions<T> {
+    public static configure<T = any>(): SelectOptions<T> {
         return new SelectOptions();
     }
 
     /**
      * @returns Default options 
      */
-    public static default<T extends DataModel = any>(): SelectOptions<T> {
+    public static default<T = any>(): SelectOptions<T> {
         return new SelectOptions();
     }
 
@@ -341,7 +341,7 @@ export class DataUpdate {
 /**
  * Data finder
  */
-export class DataFinder<T extends DataModel, PK_Type = GenericKeyValue> {
+export class DataFinder<T, PK_Type = GenericKeyValue> {
     private source: string;
     private table: string;
     private key: ModelKeyName<T>;
