@@ -3,9 +3,9 @@
 
 "use strict";
 
-import { DataModel } from "./bean";
 import { GenericFilter, ModelKeyName, GenericKeyValue, SortDirection, GenericValue, TypedRow, StrictRowUpdate } from "./common";
 import { DataAccessObject } from "./dao";
+import { QueryExtraOptions } from "./data-source-driver";
 import { escapeRegExp } from "./util";
 
 /**
@@ -272,11 +272,13 @@ export class SelectOptions<T = any> {
     public projection: Set<ModelKeyName<T>>;
     public skip: number;
     public limit: number;
+    public queryExtraOptions: QueryExtraOptions;
 
     constructor() {
         this.projection = null;
         this.skip = -1;
         this.limit = -1;
+        this.queryExtraOptions = {};
     }
 
     /**
@@ -303,6 +305,15 @@ export class SelectOptions<T = any> {
      */
     public fetchOnly(cols: ModelKeyName<T>[]): this {
         this.projection = new Set(cols);
+        return this;
+    }
+
+    /**
+     * Sets the name of the index to use
+     * @param indexName Name of the index to use
+     */
+    public useIndex(indexName: string): this {
+        this.queryExtraOptions.indexName = indexName;
         return this;
     }
 }
@@ -383,7 +394,7 @@ export class DataFinder<T, PK_Type = GenericKeyValue> {
     public async find(where: DataFilter<T>, orderBy?: OrderBy<T>, options?: SelectOptions<T>): Promise<T[]> {
         const opts = options || (new SelectOptions());
         orderBy = orderBy || OrderBy.nothing();
-        const data = await DataAccessObject.find(this.source, this.table, where.query, orderBy.by, orderBy.dir, opts.skip, opts.limit, opts.projection);
+        const data = await DataAccessObject.find(this.source, this.table, where.query, orderBy.by, orderBy.dir, opts.skip, opts.limit, opts.projection, opts.queryExtraOptions);
         if (data) {
             const result: T[] = [];
             for (const doc of data) {
@@ -403,7 +414,7 @@ export class DataFinder<T, PK_Type = GenericKeyValue> {
      * @param each Callback for each row
      */
     public async findStream(where: DataFilter<T>, orderBy: OrderBy<T>, options: SelectOptions<T>, each: (row: T) => Promise<void>): Promise<void> {
-        await DataAccessObject.findStream(this.source, this.table, where.query, orderBy.by, orderBy.dir, options.skip, options.limit, options.projection, async function (doc) {
+        await DataAccessObject.findStream(this.source, this.table, where.query, orderBy.by, orderBy.dir, options.skip, options.limit, options.projection, options.queryExtraOptions, async function (doc) {
             await each(this.dataParse(doc))
         }.bind(this));
     }
@@ -416,7 +427,7 @@ export class DataFinder<T, PK_Type = GenericKeyValue> {
      * @param each Callback for each row
      */
     public async findStreamSync(where: DataFilter<T>, orderBy: OrderBy<T>, options: SelectOptions<T>, each: (row: T) => void): Promise<void> {
-        await DataAccessObject.findStreamSync(this.source, this.table, where.query, orderBy.by, orderBy.dir, options.skip, options.limit, options.projection, function (doc) {
+        await DataAccessObject.findStreamSync(this.source, this.table, where.query, orderBy.by, orderBy.dir, options.skip, options.limit, options.projection, options.queryExtraOptions, function (doc) {
             each(this.dataParse(doc))
         }.bind(this));
     }
@@ -424,9 +435,10 @@ export class DataFinder<T, PK_Type = GenericKeyValue> {
     /**
      * Counts instances
      * @param where Conditions for the instances to match
+     * @param useIndex Name of the index to use. Leave as null for the database to figure out automatically.
      */
-    public async count(where: DataFilter<T>): Promise<number> {
-        return DataAccessObject.count(this.source, this.table, where.query);
+    public async count(where: DataFilter<T>, queryExtraOptions?: QueryExtraOptions): Promise<number> {
+        return DataAccessObject.count(this.source, this.table, where.query, queryExtraOptions || {});
     }
 
     /**

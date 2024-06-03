@@ -5,6 +5,16 @@
 
 import { GenericValue, GenericRow, GenericFilter, SortDirection, GenericKeyValue, GenericRowUpdate } from "./common";
 
+/**
+ * Extra options for a query
+ */
+export interface QueryExtraOptions {
+    /**
+     * Name of the index to use. Leave it undefined for the database to figure out automatically.
+     */
+    indexName?: string;
+}
+
 
 /**
  * Represents a driver to connect to a data source,
@@ -30,15 +40,17 @@ export interface DataSourceDriver {
      * @param skip Number of rows to skip. Leave as -1 for no skip
      * @param limit Limit of results. Leave as -1 for no limit
      * @param projection List of fields to fetch from the table. Leave as null to fetch them all.
+     * @param queryExtraOptions Additional query options
      */
-    find(table: string, filter: GenericFilter, sortBy: string, sortDir: SortDirection, skip: number, limit: number, projection: Set<string>): Promise<GenericRow[]>;
+    find(table: string, filter: GenericFilter, sortBy: string, sortDir: SortDirection, skip: number, limit: number, projection: Set<string>, queryExtraOptions: QueryExtraOptions): Promise<GenericRow[]>;
 
     /**
      * Counts the number of rows matching a condition
      * @param table Table or collection name
      * @param filter Filter to apply
+     * @param queryExtraOptions Additional query options
      */
-    count(table: string, filter: GenericFilter): Promise<number>;
+    count(table: string, filter: GenericFilter, queryExtraOptions: QueryExtraOptions): Promise<number>;
 
     /**
      * Finds rows (stream mode). You can parse each row with an ASYNC function
@@ -49,9 +61,10 @@ export interface DataSourceDriver {
      * @param skip Number of rows to skip. Leave as -1 for no skip
      * @param limit Limit of results. Leave as -1 for no limit
      * @param projection List of fields to fetch from the table. Leave as null to fetch them all. 
+     * @param queryExtraOptions Additional query options
      * @param each Function to parse each row
      */
-    findStream(table: string, filter: GenericFilter, sortBy: string, sortDir: SortDirection, skip: number, limit: number, projection: Set<string>, each: (row: GenericRow) => Promise<void>): Promise<void>;
+    findStream(table: string, filter: GenericFilter, sortBy: string, sortDir: SortDirection, skip: number, limit: number, projection: Set<string>, queryExtraOptions: QueryExtraOptions, each: (row: GenericRow) => Promise<void>): Promise<void>;
 
     /**
      * Finds rows (stream mode). You can parse each row with a SYNC function
@@ -62,9 +75,10 @@ export interface DataSourceDriver {
      * @param skip Number of rows to skip. Leave as -1 for no skip
      * @param limit Limit of results. Leave as -1 for no limit
      * @param projection List of fields to fetch from the table. Leave as null to fetch them all. 
+     * @param queryExtraOptions Additional query options
      * @param each Function to parse each row
      */
-    findStreamSync(table: string, filter: GenericFilter, sortBy: string, sortDir: SortDirection, skip: number, limit: number, projection: Set<string>, each: (row: any) => void): Promise<void>;
+    findStreamSync(table: string, filter: GenericFilter, sortBy: string, sortDir: SortDirection, skip: number, limit: number, projection: Set<string>, queryExtraOptions: QueryExtraOptions, each: (row: any) => void): Promise<void>;
 
     /* Insert */
 
