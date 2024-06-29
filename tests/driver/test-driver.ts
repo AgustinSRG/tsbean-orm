@@ -2,7 +2,7 @@
 
 "use strict";
 
-import { DataSourceDriver, DataSource, GenericKeyValue, GenericRow, SortDirection, GenericFilter, GenericRowUpdate } from "../../src/index";
+import { DataSourceDriver, DataSource, GenericKeyValue, GenericRow, SortDirection, GenericFilter, GenericRowUpdate, QueryExtraOptions } from "../../src/index";
 
 function matchesFilter(row: any, filter: GenericFilter): boolean {
     if (!filter) {
@@ -101,9 +101,10 @@ export class TestDriver implements DataSourceDriver {
      * @param sortDir "asc" or "desc". Leave as null for default sorting
      * @param skip Number of rows to skip. Leave as -1 for no skip
      * @param limit Limit of results. Leave as -1 for no limit
-     * @param projection List of fields to featch from the table. Leave as null to fetch them all.
+     * @param projection List of fields to fetch from the table. Leave as null to fetch them all.
+     * @param queryExtraOptions Additional query options
      */
-    public async find(table: string, filter: GenericFilter, sortBy: string, sortDir: SortDirection, skip: number, limit: number, projection: Set<string>): Promise<GenericRow[]> {
+    public async find(table: string, filter: GenericFilter, sortBy: string, sortDir: SortDirection, skip: number, limit: number, projection: Set<string>, queryExtraOptions: QueryExtraOptions): Promise<GenericRow[]> {
         const data = this.getTable(table);
 
         let filteredData = data.filter(d => {
@@ -159,8 +160,9 @@ export class TestDriver implements DataSourceDriver {
      * Counts the number of rows matching a condition
      * @param table Table or collection name
      * @param filter Filter to apply
+     * @param queryExtraOptions Additional query options
      */
-    public async count(table: string, filter: GenericFilter): Promise<number> {
+    public async count(table: string, filter: GenericFilter, queryExtraOptions: QueryExtraOptions): Promise<number> {
         const data = this.getTable(table);
 
         let filteredData = data.filter(d => {
@@ -179,9 +181,10 @@ export class TestDriver implements DataSourceDriver {
      * @param skip Number of rows to skip. Leave as -1 for no skip
      * @param limit Limit of results. Leave as -1 for no limit
      * @param projection List of fields to fetch from the table. Leave as null to fetch them all.
+     * @param queryExtraOptions Additional query options
      * @param each Function to parse each row
      */
-    public async findStream(table: string, filter: GenericFilter, sortBy: string, sortDir: SortDirection, skip: number, limit: number, projection: Set<string>, each: (row: GenericRow) => Promise<void>): Promise<void> {
+    public async findStream(table: string, filter: GenericFilter, sortBy: string, sortDir: SortDirection, skip: number, limit: number, projection: Set<string>, queryExtraOptions: QueryExtraOptions, each: (row: GenericRow) => Promise<void>): Promise<void> {
         const data = this.getTable(table);
 
         let filteredData = data.filter(d => {
@@ -245,9 +248,10 @@ export class TestDriver implements DataSourceDriver {
      * @param skip Number of rows to skip. Leave as -1 for no skip
      * @param limit Limit of results. Leave as -1 for no limit
      * @param projection List of fields to fetch from the table. Leave as null to fetch them all.
+     * @param queryExtraOptions Additional query options
      * @param each Function to parse each row
      */
-    public async findStreamSync(table: string, filter: GenericFilter, sortBy: string, sortDir: SortDirection, skip: number, limit: number, projection: Set<string>, each: (row: any) => void): Promise<void> {
+    public async findStreamSync(table: string, filter: GenericFilter, sortBy: string, sortDir: SortDirection, skip: number, limit: number, projection: Set<string>, queryExtraOptions: QueryExtraOptions, each: (row: any) => void): Promise<void> {
         const data = this.getTable(table);
 
         let filteredData = data.filter(d => {
